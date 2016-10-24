@@ -4,18 +4,21 @@
 //     Changes to this file will be lost if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Controller;
-
-public class Program 
+namespace Model
 {
-    static void Main(string[] args)
-    {
-        GameController game = new GameController();
-	}
+	using System;
+	using System.Collections.Generic;
+	using System.Linq;
+	using System.Text;
 
+	public class DockTile : BaseTile
+	{
+        public override string icon { get { return "[_D]"; } }
+
+	    public DockTile()
+	    {
+	        
+	    }
+	}
 }
 

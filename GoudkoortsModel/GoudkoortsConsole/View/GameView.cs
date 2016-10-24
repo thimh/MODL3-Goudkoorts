@@ -4,18 +4,25 @@
 //     Changes to this file will be lost if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Controller;
-
-public class Program 
+namespace View
 {
-    static void Main(string[] args)
-    {
-        GameController game = new GameController();
-	}
+	using System;
+	using System.Collections.Generic;
+	using System.Linq;
+	using System.Text;
 
+	public class GameView
+	{
+		public void ShowBoard()
+		{
+			throw new System.NotImplementedException();
+		}
+
+		public void ShowGameOver()
+		{
+			throw new System.NotImplementedException();
+		}
+
+	}
 }
 

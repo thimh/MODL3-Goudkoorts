@@ -12,8 +12,8 @@ using Controller;
 
 public class Program 
 {
-    static void Main(string[] args)
-    {
+	public virtual void Main()
+	{
         GameController game = new GameController();
 	}
 
