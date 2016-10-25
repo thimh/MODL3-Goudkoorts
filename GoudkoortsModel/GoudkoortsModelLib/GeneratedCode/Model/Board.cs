@@ -4,6 +4,9 @@
 //     Changes to this file will be lost if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using GoudkoortsModelLib.GeneratedCode.Model;
+
 namespace Model
 {
 	using System;
@@ -23,10 +26,23 @@ namespace Model
         public LinkedList<BaseTile> tileList7;
         public LinkedList<BaseTile> tileList8;
 
-	    public int switchTileCounter = 1;
+        ListNode<BaseTile> tileList0Node;
+        ListNode<BaseTile> tileList1Node;
+        ListNode<BaseTile> tileList2Node;
+        ListNode<BaseTile> tileList3Node;
+        ListNode<BaseTile> tileList4Node;
+        ListNode<BaseTile> tileList5Node;
+        ListNode<BaseTile> tileList6Node;
+        ListNode<BaseTile> tileList7Node;
+        ListNode<BaseTile> tileList8Node;
+
+
+
+        public int switchTileCounter = 1;
         
         public Board()
 	    {
+            
             tileList0 = new LinkedList<BaseTile>();
             tileList1 = new LinkedList<BaseTile>();
             tileList2 = new LinkedList<BaseTile>();
@@ -36,158 +52,194 @@ namespace Model
             tileList6 = new LinkedList<BaseTile>();
             tileList7 = new LinkedList<BaseTile>();
             tileList8 = new LinkedList<BaseTile>();
+
+            tileList0Node = new ListNode<BaseTile>(new[] { new WaterTile()  });
+            tileList1Node = new ListNode<BaseTile>(new[] { new BaseTile() });
+            tileList2Node = new ListNode<BaseTile>(new[] { new BaseTile() });
+            tileList3Node = new ListNode<BaseTile>(new[] {new BaseTile()});
+            tileList4Node = new ListNode<BaseTile>(new[] { new SwitchTile(1)  });
+            tileList5Node = new ListNode<BaseTile>(new[] { new BaseTile() });
+            tileList6Node = new ListNode<BaseTile>(new[] { new SwitchTile(3)  });
+            tileList7Node = new ListNode<BaseTile>(new[] { new BaseTile() });
+            tileList8Node = new ListNode<BaseTile>(new[] { new SafeTile()  });
+
+
+
         }
 
-	    public void FillLinkedLists()
+        public void FillLinkedLists()
         {
+
+
             //For array index 0
-            var tileList0Node = new LinkedListNode<BaseTile>(new BaseTile());
-            tileList0.AddFirst(tileList0Node);
+            tileList0.AddFirst(tileList0Node.tile);
             for (int i = 0; i < 11; i++)
             {
-                var node = new LinkedListNode<BaseTile>(new BaseTile());
-                tileList0.AddAfter(tileList0.FindLast(tileList0Node.Value), node);
+                var node = new ListNode<BaseTile>(new[] {new WaterTile() });
+                tileList0.AddAfter(tileList0.FindLast(tileList0Node.tile), node.tile);
             }
 
             //For array index 1
-            var tileList1Node = new LinkedListNode<BaseTile>(new BaseTile());
-            tileList1.AddFirst(tileList1Node);
+            tileList1.AddFirst(tileList1Node.tile);
             for (int i = 0; i < 11; i++)
             {
                 if (i == 2)
                 {
-                    var node = new LinkedListNode<BaseTile>(new DockTile());
-                    tileList1.AddAfter(tileList1.FindLast(tileList1Node.Value), node);
+                    var node = new ListNode<BaseTile>(new[] {new DockTile()});
+                    tileList1.AddAfter(tileList1.FindLast(tileList1Node.tile), node.tile);
                 }
                 else
                 {
-                    var node = new LinkedListNode<BaseTile>(new BaseTile());
-                    tileList1.AddAfter(tileList1.FindLast(tileList1Node.Value), node);
+                    var node = new ListNode<BaseTile>(new[] {new BaseTile()});
+                    tileList1.AddAfter(tileList1.FindLast(tileList1Node.tile), node.tile);
                 }
             }
 
             //For array index 2
-            tileList2.AddFirst(new BaseTile());
-            //tileList2.AddAfter(tileList2.FindLast(tileList2.First.Value), tileList1.First);
-            tileList2.First.Next = tileList1.First;
+            var tileList2Node = new ListNode<BaseTile>(new []{new BaseTile(), });
+            tileList2.AddFirst(tileList2Node.tile);
 
 
             ////For array index 3
-            //var tileList1Node = new LinkedListNode<BaseTile>(new BaseTile());
-            //tileList1.AddFirst(tileList1Node);
-            //for (int i = 0; i < 11; i++)
-            //{
-            //    if (i == 2)
-            //    {
-            //        var node1 = new LinkedListNode<BaseTile>(new DockTile());
-            //        tileList1.AddAfter(tileList1.FindLast(tileList1Node.Value), node);
-            //    }
-            //    else
-            //    {
-            //        var node1 = new LinkedListNode<BaseTile>(new BaseTile());
-            //        tileList1.AddAfter(tileList1.FindLast(tileList1Node.Value), node);
-            //    }
-            //}
+            tileList3.AddFirst(tileList3Node.tile);
+            for (int i = 0; i < 8; i++)
+            {
+                var node = new ListNode<BaseTile>(new[] {new BaseTile()});
+                tileList3.AddAfter(tileList3.FindLast(tileList3Node.tile), node.tile);
+               
+            }
 
             ////For array index 4
-            //var tileList1Node = new LinkedListNode<BaseTile>(new BaseTile());
-            //tileList1.AddFirst(tileList1Node);
-            //for (int i = 0; i < 11; i++)
-            //{
-            //    if (i == 2)
-            //    {
-            //        var node1 = new LinkedListNode<BaseTile>(new DockTile());
-            //        tileList1.AddAfter(tileList1.FindLast(tileList1Node.Value), node);
-            //    }
-            //    else
-            //    {
-            //        var node1 = new LinkedListNode<BaseTile>(new BaseTile());
-            //        tileList1.AddAfter(tileList1.FindLast(tileList1Node.Value), node);
-            //    }
-            //}
+            tileList4.AddFirst(tileList4Node.tile);
+            for (int i = 0; i < 5; i++)
+            {
+                if (i == 2)
+                {
+                    var node = new ListNode<BaseTile>(new[] { new SwitchTile(5)  });
+                    tileList4.AddAfter(tileList4.FindLast(tileList4Node.tile), node.tile);
+                }
+                else if (i == 3)
+                {
+                    var node = new ListNode<BaseTile>(new[] { new SwitchTile(2)  });
+                    tileList4.AddAfter(tileList4.FindLast(tileList4Node.tile), node.tile);
+                }
+                else
+                {
+                    var node = new ListNode<BaseTile>(new[] { new BaseTile() });
+                    tileList4.AddAfter(tileList4.FindLast(tileList4Node.tile), node.tile);
+                }
+            }
 
-            ////For array index 5
-            //var tileList1Node = new LinkedListNode<BaseTile>(new BaseTile());
-            //tileList1.AddFirst(tileList1Node);
-            //for (int i = 0; i < 11; i++)
-            //{
-            //    if (i == 2)
-            //    {
-            //        var node1 = new LinkedListNode<BaseTile>(new DockTile());
-            //        tileList1.AddAfter(tileList1.FindLast(tileList1Node.Value), node);
-            //    }
-            //    else
-            //    {
-            //        var node1 = new LinkedListNode<BaseTile>(new BaseTile());
-            //        tileList1.AddAfter(tileList1.FindLast(tileList1Node.Value), node);
-            //    }
-            //}
+            //For array index 5
+            tileList5.AddFirst(tileList5Node.tile);
+            for (int i = 0; i < 6; i++)
+            {
+                var node = new ListNode<BaseTile>(new[] {new BaseTile()});
+                tileList5.AddAfter(tileList5.FindLast(tileList5Node.tile), node.tile);
+            }
 
-            ////For array index 6
-            //var tileList1Node = new LinkedListNode<BaseTile>(new BaseTile());
-            //tileList1.AddFirst(tileList1Node);
-            //for (int i = 0; i < 11; i++)
-            //{
-            //    if (i == 2)
-            //    {
-            //        var node1 = new LinkedListNode<BaseTile>(new DockTile());
-            //        tileList1.AddAfter(tileList1.FindLast(tileList1Node.Value), node);
-            //    }
-            //    else
-            //    {
-            //        var node1 = new LinkedListNode<BaseTile>(new BaseTile());
-            //        tileList1.AddAfter(tileList1.FindLast(tileList1Node.Value), node);
-            //    }
-            //}
+            //For array index 6
+            tileList6.AddFirst(tileList6Node.tile);
+            for (int i = 0; i < 2; i++)
+            {
+                if (i == 1)
+                {
+                    var node = new ListNode<BaseTile>(new []{new BaseTile() });
+                    tileList6.AddAfter(tileList6.FindLast(tileList6Node.tile), node.tile);
+                }
+                else
+                {
+                    var node = new ListNode<BaseTile>(new[] { new SwitchTile(4) });
+                    tileList6.AddAfter(tileList6.FindLast(tileList6Node.tile), node.tile);
+                }
+            }
 
-            ////For array index 7
-            //var tileList1Node = new LinkedListNode<BaseTile>(new BaseTile());
-            //tileList1.AddFirst(tileList1Node);
-            //for (int i = 0; i < 11; i++)
-            //{
-            //    if (i == 2)
-            //    {
-            //        var node1 = new LinkedListNode<BaseTile>(new DockTile());
-            //        tileList1.AddAfter(tileList1.FindLast(tileList1Node.Value), node);
-            //    }
-            //    else
-            //    {
-            //        var node1 = new LinkedListNode<BaseTile>(new BaseTile());
-            //        tileList1.AddAfter(tileList1.FindLast(tileList1Node.Value), node);
-            //    }
-            //}
+            //For array index 7
+            tileList7.AddFirst(tileList7Node.tile);
+            for (int i = 0; i < 10; i++)
+            {
+                var node = new ListNode<BaseTile>(new[] {new BaseTile()});
+                tileList7.AddAfter(tileList7.FindLast(tileList7Node.tile), node.tile);
+            }
 
-            ////For array index 8
-            //var tileList8Node = new LinkedListNode<BaseTile>(new BaseTile());
-            //tileList1.AddFirst(tileList1Node);
-            //for (int i = 0; i < 11; i++)
-            //{
-            //    if (i == 2)
-            //    {
-            //        var node = new LinkedListNode<BaseTile>(new DockTile());
-            //        tileList1.AddAfter(tileList8.FindLast(tileList8Node.Value), node);
-            //    }
-            //    else
-            //    {
-            //        var node = new LinkedListNode<BaseTile>(new BaseTile());
-            //        tileList8.AddAfter(tileList8.FindLast(tileList8Node.Value), node);
-            //    }
-            //}
+            //For array index 8
+            tileList8.AddFirst(tileList8Node.tile);
+            for (int i = 0; i < 10; i++)
+            {
+                if (i < 3)
+                {
+                    var node = new ListNode<BaseTile>(new[] {new BaseTile() });
+                    tileList8.AddAfter(tileList8.FindLast(tileList8Node.tile), node.tile);
+                }
+                else
+                {
+                    var node = new ListNode<BaseTile>(new[] {new SafeTile() });
+                    tileList8.AddAfter(tileList8.FindLast(tileList8Node.tile), node.tile);
+                }
+            }
+
+        }
+
+	    public void LinkLinks()
+	    {
+            //TODO: link all links that need to be linked in one method 
+
+            //row 2
+            //tileList2Node.Next = tileList1Node;
+
+            //row 3
+
 
         }
 
         public void TestLists()
 	    {
             FillLinkedLists();
-	        foreach (var tile in tileList1)
+            foreach (var tile in tileList0)
+            {
+                Console.Write(tile.icon);
+            }
+            Console.WriteLine("");
+            foreach (var tile in tileList1)
 	        {
                 Console.Write(tile.icon);
             }
-	        foreach (var baseTile in tileList2)
+            Console.WriteLine("");
+	        foreach (var tile in tileList2)
 	        {
 	            Console.Write(tile.icon);
-	        }
-            Console.WriteLine("Test");
+            }
+            Console.WriteLine("");
+            foreach (var tile in tileList3)
+            {
+                Console.Write(tile.icon);
+            }
+            Console.WriteLine("");
+            foreach (var tile in tileList4)
+            {
+                Console.Write(tile.icon);
+            }
+            Console.WriteLine("");
+            foreach (var tile in tileList5)
+            {
+                Console.Write(tile.icon);
+            }
+            Console.WriteLine("");
+            foreach (var tile in tileList6)
+            {
+                Console.Write(tile.icon);
+            }
+            Console.WriteLine("");
+            foreach (var tile in tileList7)
+            {
+                Console.Write(tile.icon);
+            }
+            Console.WriteLine("");
+            foreach (var tile in tileList8)
+            {
+                Console.Write(tile.icon);
+            }
+            Console.WriteLine("");
 	        Console.ReadLine();
 	    }
 	}

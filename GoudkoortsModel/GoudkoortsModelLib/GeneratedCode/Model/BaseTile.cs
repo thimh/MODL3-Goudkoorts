@@ -4,6 +4,10 @@
 //     Changes to this file will be lost if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using System.Collections;
+using GoudkoortsModelLib.GeneratedCode.Model;
+
 namespace Model
 {
 	using System;
@@ -34,7 +38,6 @@ namespace Model
 	    {
 	        
 	    }
-
 	}
 }
 

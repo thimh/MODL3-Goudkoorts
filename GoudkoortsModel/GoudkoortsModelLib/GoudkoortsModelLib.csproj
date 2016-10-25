@@ -49,10 +49,12 @@
     <Compile Include="GeneratedCode\Model\Board.cs" />
     <Compile Include="GeneratedCode\Model\Cart.cs" />
     <Compile Include="GeneratedCode\Model\DockTile.cs" />
+    <Compile Include="GeneratedCode\Model\ListNode.cs" />
     <Compile Include="GeneratedCode\Model\MovableObject.cs" />
     <Compile Include="GeneratedCode\Model\SafeTile.cs" />
     <Compile Include="GeneratedCode\Model\Ship.cs" />
     <Compile Include="GeneratedCode\Model\SwitchTile.cs" />
+    <Compile Include="GeneratedCode\Model\WaterTile.cs" />
     <Compile Include="GeneratedCode\Program .cs" />
     <Compile Include="GeneratedCode\View\GameView.cs" />
     <Compile Include="GeneratedCode\View\InputView.cs" />
