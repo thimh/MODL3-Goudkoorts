@@ -22,6 +22,12 @@ namespace Model
 		    get { return "[  ]"; }
 		}
 
+        public int index
+        {
+            get;
+            set;
+        }
+
 		public bool isOccupied
 		{
 			get;

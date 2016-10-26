@@ -56,15 +56,12 @@ namespace Model
             tileList0Node = new ListNode<BaseTile>(new[] { new WaterTile()  });
             tileList1Node = new ListNode<BaseTile>(new[] { new BaseTile() });
             tileList2Node = new ListNode<BaseTile>(new[] { new BaseTile() });
-            tileList3Node = new ListNode<BaseTile>(new[] {new BaseTile()});
+            tileList3Node = new ListNode<BaseTile>(new[] { new BaseTile() });
             tileList4Node = new ListNode<BaseTile>(new[] { new SwitchTile(1)  });
             tileList5Node = new ListNode<BaseTile>(new[] { new BaseTile() });
             tileList6Node = new ListNode<BaseTile>(new[] { new SwitchTile(3)  });
             tileList7Node = new ListNode<BaseTile>(new[] { new BaseTile() });
-            tileList8Node = new ListNode<BaseTile>(new[] { new SafeTile()  });
-
-
-
+            tileList8Node = new ListNode<BaseTile>(new[] { new SafeTile() });
         }
 
         public void FillLinkedLists()
@@ -72,11 +69,13 @@ namespace Model
 
 
             //For array index 0
-            tileList0.AddFirst(tileList0Node.tile);
-            for (int i = 0; i < 11; i++)
+            tileList0.AddLast(tileList0Node.tile);
+            for (int i = 1; i < 12; i++)
             {
                 var node = new ListNode<BaseTile>(new[] {new WaterTile() });
-                tileList0.AddAfter(tileList0.FindLast(tileList0Node.tile), node.tile);
+                node.tile.index = i;
+                tileList0.Last.Next = node;
+                tileList0.AddLast(node.tile);
             }
 
             //For array index 1
@@ -86,17 +85,20 @@ namespace Model
                 if (i == 2)
                 {
                     var node = new ListNode<BaseTile>(new[] {new DockTile()});
+                    node.tile.index = i;
                     tileList1.AddAfter(tileList1.FindLast(tileList1Node.tile), node.tile);
                 }
                 else
                 {
                     var node = new ListNode<BaseTile>(new[] {new BaseTile()});
+                    node.tile.index = i;
                     tileList1.AddAfter(tileList1.FindLast(tileList1Node.tile), node.tile);
                 }
             }
 
             //For array index 2
             var tileList2Node = new ListNode<BaseTile>(new []{new BaseTile(), });
+            tileList2Node.tile.index = 0;
             tileList2.AddFirst(tileList2Node.tile);
 
 
@@ -105,6 +107,7 @@ namespace Model
             for (int i = 0; i < 8; i++)
             {
                 var node = new ListNode<BaseTile>(new[] {new BaseTile()});
+                node.tile.index = i;
                 tileList3.AddAfter(tileList3.FindLast(tileList3Node.tile), node.tile);
                
             }
@@ -116,16 +119,19 @@ namespace Model
                 if (i == 2)
                 {
                     var node = new ListNode<BaseTile>(new[] { new SwitchTile(5)  });
+                    node.tile.index = i;
                     tileList4.AddAfter(tileList4.FindLast(tileList4Node.tile), node.tile);
                 }
                 else if (i == 3)
                 {
                     var node = new ListNode<BaseTile>(new[] { new SwitchTile(2)  });
+                    node.tile.index = i;
                     tileList4.AddAfter(tileList4.FindLast(tileList4Node.tile), node.tile);
                 }
                 else
                 {
                     var node = new ListNode<BaseTile>(new[] { new BaseTile() });
+                    node.tile.index = i;
                     tileList4.AddAfter(tileList4.FindLast(tileList4Node.tile), node.tile);
                 }
             }
@@ -135,6 +141,7 @@ namespace Model
             for (int i = 0; i < 6; i++)
             {
                 var node = new ListNode<BaseTile>(new[] {new BaseTile()});
+                node.tile.index = i;
                 tileList5.AddAfter(tileList5.FindLast(tileList5Node.tile), node.tile);
             }
 
@@ -145,11 +152,13 @@ namespace Model
                 if (i == 1)
                 {
                     var node = new ListNode<BaseTile>(new []{new BaseTile() });
+                    node.tile.index = i;
                     tileList6.AddAfter(tileList6.FindLast(tileList6Node.tile), node.tile);
                 }
                 else
                 {
                     var node = new ListNode<BaseTile>(new[] { new SwitchTile(4) });
+                    node.tile.index = i;
                     tileList6.AddAfter(tileList6.FindLast(tileList6Node.tile), node.tile);
                 }
             }
@@ -159,6 +168,7 @@ namespace Model
             for (int i = 0; i < 10; i++)
             {
                 var node = new ListNode<BaseTile>(new[] {new BaseTile()});
+                node.tile.index = i;
                 tileList7.AddAfter(tileList7.FindLast(tileList7Node.tile), node.tile);
             }
 
@@ -169,32 +179,85 @@ namespace Model
                 if (i < 3)
                 {
                     var node = new ListNode<BaseTile>(new[] {new BaseTile() });
+                    node.tile.index = i;
                     tileList8.AddAfter(tileList8.FindLast(tileList8Node.tile), node.tile);
                 }
                 else
                 {
                     var node = new ListNode<BaseTile>(new[] {new SafeTile() });
+                    node.tile.index = i;
                     tileList8.AddAfter(tileList8.FindLast(tileList8Node.tile), node.tile);
                 }
             }
 
         }
 
+	    //public ListNode<BaseTile> FindLastNode(LinkedList<BaseTile> list)
+	    //{
+	    //    var temp = list.First;
+	    //    while (temp.Next != null)
+	    //    {
+	    //        if (temp.Next == null)
+	    //        {
+	    //            return null;
+	    //        }
+	    //        temp = temp.Next;
+	    //    }
+	    //    return null;
+	    //}
+
 	    public void LinkLinks()
 	    {
+            //all non-special tiles
+	        //var temp = tileList0Node;
+
+         //   for (int i = 0; i < tileList0.Count; i++)
+	        //{
+	        //    if (tileList6Node.tile.GetType() != typeof(SwitchTile))
+	        //    {
+         //           tileList0Node.Next = 
+	        //        temp = temp.Next;
+	        //    }
+	        //}
+
             //TODO: link all links that need to be linked in one method 
 
             //row 2
-            //tileList2Node.Next = tileList1Node;
+            tileList2Node.Next = tileList1Node;
 
             //row 3
+	        tileList3Node.Next = tileList2Node;
 
+            //row 6
+	        var temp5 = tileList5Node;
+	        ListNode<BaseTile> temp5New = null;
+	        for (int i = 0; i < tileList5.Count; i++)
+	        {
+	            if (temp5.tile.index == 1)
+	            {
+	                temp5New = temp5;
+                    break;
+	            }
+	        }
+            //tileList6Node.Next throws nullpointer
+	        //var tempy = tileList6Node.Next.tile.index;
+	        //var temp6 = tileList6Node;
+	        //for (int i = 0; i < tileList6.Count; i++)
+	        //{
+	        //    if (temp6.tile.index == 2)
+	        //    {
+	        //        temp6.Next = temp5New;
+	        //    }
+	        //    temp6 = temp6.Next;
+	        //}
 
-        }
+            Console.WriteLine(" test");
+	    }
 
         public void TestLists()
 	    {
             FillLinkedLists();
+            LinkLinks();
             foreach (var tile in tileList0)
             {
                 Console.Write(tile.icon);
@@ -240,6 +303,11 @@ namespace Model
                 Console.Write(tile.icon);
             }
             Console.WriteLine("");
+
+            Console.WriteLine("");
+            //Console.WriteLine(tileList6Node.tile.icon + " heeft als volgende tile: " + tileList6Node.Next.tile.icon);
+            Console.WriteLine(tileList0Node.tile.index);
+
 	        Console.ReadLine();
 	    }
 	}
