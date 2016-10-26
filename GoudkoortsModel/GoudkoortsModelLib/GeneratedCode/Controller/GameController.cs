@@ -6,56 +6,45 @@
 //------------------------------------------------------------------------------
 namespace Controller
 {
-    using Model;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using View;
+	using Model;
+	using System;
+	using System.Collections.Generic;
+	using System.Linq;
+	using System.Text;
+	using View;
 
-    public class GameController
-    {
-        public Board board
-        {
-            get;
-            set;
-        }
+	public class GameController
+	{
+		public virtual Board board
+		{
+			get;
+			set;
+		}
 
-        public bool isGameOver
-        {
-            get;
-            set;
-        }
+		public virtual bool isGameOver
+		{
+			get;
+			set;
+		}
 
-        public Board Board
-        {
-            get;
-            set;
-        }
+		public virtual Board Board
+		{
+			get;
+			set;
+		}
 
-        public InputView InputView
-        {
-            get;
-            set;
-        }
+		public virtual InputView InputView
+		{
+			get;
+			set;
+		}
 
-        public GameView GameView
-        {
-            get;
-            set;
-        }
+	    public GameView gameView;
 
-        public GameController()
-        {
-            board = new Board();
-            board.TestLists();
-        }
-
-        public void startGame()
-        {
-
-        }
-
-    }
+	    public GameController()
+	    {
+	        gameView = new GameView();
+	    }
+	}
 }
 

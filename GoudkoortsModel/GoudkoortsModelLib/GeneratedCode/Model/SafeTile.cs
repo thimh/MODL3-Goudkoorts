@@ -14,6 +14,7 @@ namespace Model
 	public class SafeTile : BaseTile
 	{
         public override string icon { get { return "[__]"; } }
-	}
+
+    }
 }
 

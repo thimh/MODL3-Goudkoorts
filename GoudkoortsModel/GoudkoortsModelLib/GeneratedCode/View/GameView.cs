@@ -4,6 +4,9 @@
 //     Changes to this file will be lost if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using Model;
+
 namespace View
 {
 	using System;
@@ -13,12 +16,139 @@ namespace View
 
 	public class GameView
 	{
-		public void ShowBoard()
+	    public Board board;
+
+	    public GameView()
+	    {
+            board = new Board();
+	        ShowBoard();
+	    }
+
+		public virtual void ShowBoard()
 		{
-			throw new System.NotImplementedException();
+			board.MakeRows();
+            board.LinkLinks();
+
+            //row 0
+		    foreach (var tile in board.tileList0)
+		    {
+		        Console.Write(tile.icon);
+		    }
+            Console.WriteLine("");
+
+            //row 1
+		    foreach (var tile in board.tileList1)
+		    {
+		        Console.Write(tile.icon);
+		    }
+            Console.WriteLine("");
+
+            //row 2
+		    for (int i = 0; i < 12; i++)
+		    {
+		        if (i == 11)
+		        {
+		            Console.Write(board.tileList2[0].icon);
+		        }
+		        else
+		        {
+		            Console.Write("    ");
+		        }
+		    }
+            Console.WriteLine("");
+
+            //row 3
+            for (int i = 0; i < 12; i++)
+            {
+                if (i == 0)
+                {
+                    Console.Write("[AA]");
+                }
+                else if (i == 4 || i == 10)
+                {
+                    Console.Write("    ");
+                }
+                else
+                {
+                    Console.Write(board.tileList3[i].icon);
+                }
+            }
+            Console.WriteLine("");
+
+      //      //row 2
+      //      for (int i = 0; i < 12; i++)
+      //      {
+      //          if (i == 11)
+      //          {
+      //              Console.Write(board.tileList2[0].icon);
+      //          }
+      //          else
+      //          {
+      //              Console.Write("    ");
+      //          }
+      //      }
+      //      Console.WriteLine("");
+
+      //      //row 2
+      //      for (int i = 0; i < 12; i++)
+      //      {
+      //          if (i == 11)
+      //          {
+      //              Console.Write(board.tileList2[0].icon);
+      //          }
+      //          else
+      //          {
+      //              Console.Write("    ");
+      //          }
+      //      }
+      //      Console.WriteLine("");
+
+      //      //row 2
+      //      for (int i = 0; i < 12; i++)
+      //      {
+      //          if (i == 11)
+      //          {
+      //              Console.Write(board.tileList2[0].icon);
+      //          }
+      //          else
+      //          {
+      //              Console.Write("    ");
+      //          }
+      //      }
+      //      Console.WriteLine("");
+
+      //      //row 2
+      //      for (int i = 0; i < 12; i++)
+      //      {
+      //          if (i == 11)
+      //          {
+      //              Console.Write(board.tileList2[0].icon);
+      //          }
+      //          else
+      //          {
+      //              Console.Write("    ");
+      //          }
+      //      }
+      //      Console.WriteLine("");
+
+      //      //row 8
+		    //foreach (var tile in board.tileList8)
+		    //{
+		    //    Console.Write(tile.icon);
+		    //}
+
+
+
+      //      if (i == 0)
+      //      {
+      //          Console.Write("[AA]");
+      //      }
+
+
+            Console.ReadLine();
 		}
 
-		public void ShowGameOver()
+		public virtual void ShowGameOver()
 		{
 			throw new System.NotImplementedException();
 		}

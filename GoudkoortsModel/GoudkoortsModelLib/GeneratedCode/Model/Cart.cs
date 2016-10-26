@@ -13,13 +13,13 @@ namespace Model
 
 	public class Cart : MovableObject
 	{
-		public bool hasLoad
+		public virtual bool hasLoad
 		{
 			get;
 			set;
 		}
 
-		public void Unload()
+		public virtual void Unload()
 		{
 			throw new System.NotImplementedException();
 		}

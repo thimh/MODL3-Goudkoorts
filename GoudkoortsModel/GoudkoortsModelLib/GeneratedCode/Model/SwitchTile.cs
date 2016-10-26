@@ -15,27 +15,25 @@ namespace Model
 	{
 	    public int number;
 
-        public override string icon { get {
-            if (isUp)
-            {
-                return "[" + this.number + "^]";
-            }
-            else
-            {
-                return "[" + this.number + "v]";
-            }
-        } }
 
-		public bool isUp
-		{
-            get { return true; }
-		    set { }
-		}
+        public override string icon {
+            get
+            {
+                if (isUp)
+                {
+                    return "[" + number +"^]";
+                }
+                else
+                {
+                    return "[" + number +"v]";
+                }
+            }
+        }
 
-	    public SwitchTile(int number)
-	    {
-	        this.number = number;
-	    }
+        public SwitchTile(int number)
+        {
+            this.number = number;
+        }
 
 	}
 }

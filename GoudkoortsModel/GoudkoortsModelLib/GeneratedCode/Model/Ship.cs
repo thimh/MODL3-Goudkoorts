@@ -13,18 +13,18 @@ namespace Model
 
 	public class Ship : MovableObject
 	{
-		public int loadAmount
+		public virtual int loadAmount
 		{
 			get;
 			set;
 		}
 
-		public void CheckLoad()
+		public virtual void CheckLoad()
 		{
 			throw new System.NotImplementedException();
 		}
 
-		public void AddLoad()
+		public virtual void AddLoad()
 		{
 			throw new System.NotImplementedException();
 		}

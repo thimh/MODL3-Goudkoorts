@@ -4,10 +4,6 @@
 //     Changes to this file will be lost if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
-using System.Collections;
-using GoudkoortsModelLib.GeneratedCode.Model;
-
 namespace Model
 {
 	using System;
@@ -17,27 +13,19 @@ namespace Model
 
 	public class BaseTile
 	{
-		public virtual string icon
-		{
-		    get { return "[  ]"; }
-		}
+		public virtual string icon { get { return "[  ]"; } }
 
-		public bool isOccupied
-		{
-			get;
-			set;
-		}
+		public virtual bool isOccupied { get; set; }
 
-		public MovableObject MovableObject
-		{
-			get;
-			set;
-		}
+        public virtual bool isUp { get; set; }
 
-	    public BaseTile()
-	    {
-	        
-	    }
+		public virtual MovableObject MovableObject { get; set; }
+
+        public virtual BaseTile Next { get; set; }
+        public virtual BaseTile Previous { get; set; }
+
+        public int index { get; set; }
+
 	}
 }
 

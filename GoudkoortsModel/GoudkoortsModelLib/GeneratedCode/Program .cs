@@ -12,9 +12,9 @@ using Controller;
 
 public class Program 
 {
-    static void Main(string[] args)
-    {
-        GameController game = new GameController();
+	public static void Main(string[] args)
+	{
+		GameController game = new GameController();
 	}
 
 }
