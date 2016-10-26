@@ -15,11 +15,6 @@ namespace Controller
 
 	public class GameController
 	{
-		public virtual Board board
-		{
-			get;
-			set;
-		}
 
 		public virtual bool isGameOver
 		{
@@ -27,23 +22,14 @@ namespace Controller
 			set;
 		}
 
-		public virtual Board Board
-		{
-			get;
-			set;
-		}
-
-		public virtual InputView InputView
-		{
-			get;
-			set;
-		}
-
+	    public Board board;
+        
 	    public GameView gameView;
 
 	    public GameController()
 	    {
-	        gameView = new GameView();
+            board = new Board();
+	        gameView = new GameView(this);
 	    }
 	}
 }

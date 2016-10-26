@@ -115,7 +115,7 @@ namespace Model
 	        }
 
             //row 5
-	        for (int i = 0; i < 7; i++)
+	        for (int i = 0; i < 8; i++)
 	        {
                 var tile = new BaseTile();
                 tile.index = i;
