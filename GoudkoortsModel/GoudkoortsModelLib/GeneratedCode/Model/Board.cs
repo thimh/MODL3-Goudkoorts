@@ -63,12 +63,14 @@ namespace Model
 	                var tile = new BaseTile();
 	                tile.index = i;
                     tileList1.Add(tile);
-                }
+	                tile.isOccupied = false;
+	            }
 	            else
 	            {
 	                var tile = new DockTile();
 	                tile.index = i;
                     tileList1.Add(tile);
+                    tile.isOccupied = false;
                 }
 	        }
 
@@ -76,13 +78,15 @@ namespace Model
             var tileRow2 = new BaseTile();
 	        tileRow2.index = 0;
             tileList2.Add(tileRow2);
+            tileRow2.isOccupied = false;
 
             //row 3
-	        for (int i = 0; i < 11; i++)
+            for (int i = 0; i < 11; i++)
 	        {
                 var tile = new BaseTile();
                 tile.index = i;
                 tileList3.Add(tile);
+                tile.isOccupied = false;
             }
 
             //row 4
@@ -93,24 +97,28 @@ namespace Model
                     var tile = new SwitchTile(1);
                     tile.index = i;
                     tileList4.Add(tile);
+                    tile.isOccupied = false;
                 }
 	            else if (i == 2)
 	            {
                     var tile = new SwitchTile(2);
                     tile.index = i;
                     tileList4.Add(tile);
+                    tile.isOccupied = false;
                 }
                 else if (i == 3)
 	            {
                     var tile = new SwitchTile(5);
                     tile.index = i;
                     tileList4.Add(tile);
+                    tile.isOccupied = false;
                 }
 	            else
 	            {
                     var tile = new BaseTile();
                     tile.index = i;
                     tileList4.Add(tile);
+                    tile.isOccupied = false;
                 }
 	        }
 
@@ -120,6 +128,7 @@ namespace Model
                 var tile = new BaseTile();
                 tile.index = i;
                 tileList5.Add(tile);
+                tile.isOccupied = false;
             }
 
             //row 6
@@ -130,18 +139,21 @@ namespace Model
                     var tile = new BaseTile();
                     tile.index = i;
                     tileList6.Add(tile);
+                    tile.isOccupied = false;
                 }
 	            else if (i == 0)
 	            {
                     var tile = new SwitchTile(3);
                     tile.index = i;
                     tileList6.Add(tile);
+                    tile.isOccupied = false;
                 }
                 else
 	            {
                     var tile = new SwitchTile(4);
                     tile.index = i;
                     tileList6.Add(tile);
+                    tile.isOccupied = false;
                 }
 	        }
 
@@ -151,6 +163,7 @@ namespace Model
                 var tile = new BaseTile();
                 tile.index = i;
                 tileList7.Add(tile);
+                tile.isOccupied = false;
             }
 
             //row 8
@@ -161,12 +174,14 @@ namespace Model
                     var tile = new BaseTile();
                     tile.index = i;
                     tileList8.Add(tile);
+                    tile.isOccupied = false;
                 }
 	            else
 	            {
                     var tile = new SafeTile();
                     tile.index = i;
                     tileList8.Add(tile);
+                    tile.isOccupied = false;
                 }
 	        }
 	    }
@@ -277,66 +292,72 @@ namespace Model
             }
         }
 
-	    public void Test()
+        public void UpdateLinks()
 	    {
-            MakeRows();
-            LinkLinks();
-
-	        foreach (var tile in tileList0)
-	        {
-	            Console.Write(tile.icon);
-	        }
-            Console.WriteLine("");
-            foreach (var tile in tileList1)
-            {
-                Console.Write(tile.icon);
-            }
-            Console.WriteLine("");
-            foreach (var tile in tileList2)
-            {
-                Console.Write(tile.icon);
-            }
-            Console.WriteLine("");
-            foreach (var tile in tileList3)
-            {
-                Console.Write(tile.icon);
-            }
-            Console.WriteLine("");
-            foreach (var tile in tileList4)
-            {
-                Console.Write(tile.icon);
-            }
-            Console.WriteLine("");
-            foreach (var tile in tileList5)
-            {
-                Console.Write(tile.icon);
-            }
-            Console.WriteLine("");
-            foreach (var tile in tileList6)
-            {
-                Console.Write(tile.icon);
-            }
-            Console.WriteLine("");
-            foreach (var tile in tileList7)
-            {
-                Console.Write(tile.icon);
-            }
-            Console.WriteLine("");
-            foreach (var tile in tileList8)
-            {
-                Console.Write(tile.icon);
-            }
-            Console.WriteLine("");
-            Console.WriteLine("");
-            Console.WriteLine("");
-
-            Console.WriteLine(tileList3[2].icon + "" + tileList3[2].Next.icon);
-            Console.WriteLine(tileList4[2].icon + "" + tileList4[2].Next.icon);
-            Console.WriteLine(tileList4[3].icon + "" + tileList4[3].Next.icon);
-            Console.WriteLine(tileList7[5].icon + "" + tileList7[5].Next.icon);
-            Console.WriteLine(tileList6[2].icon + "" + tileList6[2].Next.icon);
-            Console.ReadLine();
+            //update the links for the switches!
+	        
 	    }
+
+	    //public void Test()
+	    //{
+     //       MakeRows();
+     //       LinkLinks();
+
+	    //    foreach (var tile in tileList0)
+	    //    {
+	    //        Console.Write(tile.icon);
+	    //    }
+     //       Console.WriteLine("");
+     //       foreach (var tile in tileList1)
+     //       {
+     //           Console.Write(tile.icon);
+     //       }
+     //       Console.WriteLine("");
+     //       foreach (var tile in tileList2)
+     //       {
+     //           Console.Write(tile.icon);
+     //       }
+     //       Console.WriteLine("");
+     //       foreach (var tile in tileList3)
+     //       {
+     //           Console.Write(tile.icon);
+     //       }
+     //       Console.WriteLine("");
+     //       foreach (var tile in tileList4)
+     //       {
+     //           Console.Write(tile.icon);
+     //       }
+     //       Console.WriteLine("");
+     //       foreach (var tile in tileList5)
+     //       {
+     //           Console.Write(tile.icon);
+     //       }
+     //       Console.WriteLine("");
+     //       foreach (var tile in tileList6)
+     //       {
+     //           Console.Write(tile.icon);
+     //       }
+     //       Console.WriteLine("");
+     //       foreach (var tile in tileList7)
+     //       {
+     //           Console.Write(tile.icon);
+     //       }
+     //       Console.WriteLine("");
+     //       foreach (var tile in tileList8)
+     //       {
+     //           Console.Write(tile.icon);
+     //       }
+     //       Console.WriteLine("");
+     //       Console.WriteLine("");
+     //       Console.WriteLine("");
+
+     //       Console.WriteLine(tileList3[2].icon + "" + tileList3[2].Next.icon);
+     //       Console.WriteLine(tileList4[2].icon + "" + tileList4[2].Next.icon);
+     //       Console.WriteLine(tileList4[3].icon + "" + tileList4[3].Next.icon);
+     //       Console.WriteLine(tileList7[5].icon + "" + tileList7[5].Next.icon);
+     //       Console.WriteLine(tileList6[2].icon + "" + tileList6[2].Next.icon);
+     //       Console.ReadLine();
+	    //}
 
 	}
 }

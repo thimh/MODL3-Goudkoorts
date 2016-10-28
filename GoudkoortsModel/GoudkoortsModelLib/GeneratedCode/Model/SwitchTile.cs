@@ -13,7 +13,7 @@ namespace Model
 
 	public class SwitchTile : BaseTile
 	{
-	    public int number;
+	    public int number { get; set; }
 
 
         public override string icon {
@@ -21,11 +21,30 @@ namespace Model
             {
                 if (isUp)
                 {
-                    return "[" + number +"^]";
+                    return "{" + number +"^}";
                 }
                 else
                 {
-                    return "[" + number +"v]";
+                    return "{" + number +"v}";
+                }
+            }
+        }
+
+        public override void ChangeIcon()
+        {
+            if (isOccupied)
+            {
+                icon = "{00}";
+            }
+            else
+            {
+                if (isUp)
+                {
+                    icon = "{" + number + "^}";
+                }
+                else
+                {
+                    icon = "{" + number + "v}";
                 }
             }
         }

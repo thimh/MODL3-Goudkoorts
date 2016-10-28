@@ -4,33 +4,482 @@
 //     Changes to this file will be lost if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+
+using System.Threading;
+using GoudkoortsModelLib.GeneratedCode.Controller;
+
 namespace Controller
 {
 	using Model;
 	using System;
+    using System.Timers;
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Text;
 	using View;
 
-	public class GameController
-	{
+    public class GameController
+    {
+        public string input;
 
-		public virtual bool isGameOver
-		{
-			get;
-			set;
-		}
 
-	    public Board board;
-        
-	    public GameView gameView;
+        public virtual bool isGameOver { get; set; }
 
-	    public GameController()
-	    {
+        public Board board;
+
+        public GameView gameView;
+
+        public OutputController outputController;
+
+        public GameController()
+        {
             board = new Board();
-	        gameView = new GameView(this);
-	    }
-	}
+            gameView = new GameView(this);
+            outputController = new OutputController(this);
+            gameView.ShowBoard();
+            PlayGame();
+        }
+
+        public void PlayGame()
+        {
+            //board.tileList3[0].currentObject = new Cart();
+            //board.tileList3[0].isOccupied = true;
+
+            Timer timer = new Timer();
+            timer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
+            timer.Interval = 2000; //TODO: interval should be changed depenting on score
+            timer.Enabled = true;
+            
+            //while (Console.Read() != 'q') ;
+            while (!isGameOver)
+            {
+                outputController.SwitchInput();
+            }
+        }
+
+        public void OnTimedEvent(object sender, ElapsedEventArgs e)
+        {
+            //TODO: move all movable opbjects
+            AddCart();
+            MoveCart();
+            //Test();
+        }
+
+        public void MoveCart()
+        {
+            MoveCartsRow1();
+
+            MoveCartsRow2();
+
+            MoveCartsRow3();
+
+            MoveCartsRow4();
+
+            MoveCartsRow5();
+
+            MoveCartsRow6();
+
+            MoveCartsRow7();
+
+            MoveCartsRow8();
+
+            gameView.ShowBoard();
+        }
+
+        public void MoveCartsRow1()
+        {
+            MovableObject tempCart;
+            foreach (var tile in board.tileList1)
+            {
+                if (tile.isOccupied)
+                {
+
+                    tempCart = tile.currentObject;
+                    if (tile.Next.GetType() != typeof(SwitchTile))
+                    {
+                        if (!tile.Next.isOccupied)
+                        {
+                            tile.isOccupied = false;
+                            tile.currentObject = null;
+
+                            tile.Next.isOccupied = true;
+                            tile.Next.currentObject = tempCart;
+
+                            tile.ChangeIcon();
+                            break;
+                        }
+                    }
+                    
+
+                    //else TODO: collision check!
+                    //{
+
+                    //}
+                }
+            }
+        }
+
+        private void MoveCartsRow2()
+        {
+            MovableObject tempCart;
+            if (board.tileList2[0].isOccupied)
+            {
+                tempCart = board.tileList2[0].currentObject;
+                if (!board.tileList2[0].Next.isOccupied)
+                {
+                    board.tileList2[0].isOccupied = false;
+                    board.tileList2[0].currentObject = null;
+
+                    board.tileList2[0].Next.currentObject = tempCart;
+                    board.tileList2[0].Next.isOccupied = true;
+
+                    board.tileList2[0].ChangeIcon();
+                }
+                //else TODO: collision check!
+                //{
+                    
+                //}
+            }
+        }
+
+        private void MoveCartsRow3()
+        {
+            MovableObject tempCart;
+            foreach (var tile in board.tileList3)
+            {
+                if (tile.isOccupied)
+                {
+
+                    tempCart = tile.currentObject;
+                    if (tile.Next.GetType() != typeof(SwitchTile))
+                    {
+                        if (!tile.Next.isOccupied)
+                        {
+                            tile.isOccupied = false;
+                            tile.currentObject = null;
+
+                            tile.Next.isOccupied = true;
+                            tile.Next.currentObject = tempCart;
+
+                            tile.ChangeIcon();
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        if (tile.Next.isUp)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            if (tile.Next.isOccupied)
+                            {
+                                //collision!
+                            }
+                            else
+                            {
+                                tile.isOccupied = false;
+                                tile.currentObject = null;
+
+                                tile.Next.isOccupied = true;
+                                tile.Next.currentObject = tempCart;
+
+                                tile.ChangeIcon();
+                                break;
+                            }
+                        }
+                    }
+
+                    //else TODO: collision check!
+                    //{
+
+                    //}
+                }
+            }
+        }
+
+        private void MoveCartsRow4()
+        {
+            MovableObject tempCart;
+            foreach (var tile in board.tileList4)
+            {
+                if (tile.isOccupied)
+                {
+
+                    tempCart = tile.currentObject;
+                    if (tile.Next.GetType() != typeof(SwitchTile))
+                    {
+                        if (!tile.Next.isOccupied)
+                        {
+                            tile.isOccupied = false;
+                            tile.currentObject = null;
+
+                            tile.Next.isOccupied = true;
+                            tile.Next.currentObject = tempCart;
+
+                            tile.ChangeIcon();
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        if (tile.Next.isUp)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            if (tile.Next.isOccupied)
+                            {
+                                //collision!
+                            }
+                            else
+                            {
+                                tile.isOccupied = false;
+                                tile.currentObject = null;
+
+                                tile.Next.isOccupied = true;
+                                tile.Next.currentObject = tempCart;
+
+                                tile.ChangeIcon();
+                                break;
+                            }
+                        }
+                    }
+
+                    //else TODO: collision check!
+                    //{
+
+                    //}
+                }
+            }
+        }
+
+        private void MoveCartsRow5()
+        {
+            MovableObject tempCart;
+            foreach (var tile in board.tileList5)
+            {
+                if (tile.isOccupied)
+                {
+
+                    tempCart = tile.currentObject;
+                    if (tile.Next.GetType() != typeof(SwitchTile))
+                    {
+                        if (!tile.Next.isOccupied)
+                        {
+                            tile.isOccupied = false;
+                            tile.currentObject = null;
+
+                            tile.Next.isOccupied = true;
+                            tile.Next.currentObject = tempCart;
+
+                            tile.ChangeIcon();
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        if (tile.Next.isUp)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            if (tile.Next.isOccupied)
+                            {
+                                //collision!
+                            }
+                            else
+                            {
+                                tile.isOccupied = false;
+                                tile.currentObject = null;
+
+                                tile.Next.isOccupied = true;
+                                tile.Next.currentObject = tempCart;
+
+                                tile.ChangeIcon();
+                                break;
+                            }
+                        }
+                    }
+
+                    //else TODO: collision check!
+                    //{
+
+                    //}
+                }
+            }
+        }
+
+        private void MoveCartsRow6()
+        {
+            MovableObject tempCart;
+            foreach (var tile in board.tileList6)
+            {
+                if (tile.isOccupied)
+                {
+
+                    tempCart = tile.currentObject;
+                    if (tile.Next.GetType() != typeof(SwitchTile))
+                    {
+                        if (!tile.Next.isOccupied)
+                        {
+                            tile.isOccupied = false;
+                            tile.currentObject = null;
+
+                            tile.Next.isOccupied = true;
+                            tile.Next.currentObject = tempCart;
+
+                            tile.ChangeIcon();
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        if (tile.Next.index == 0)
+                        {
+                            if (tile.Next.isUp)
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                if (tile.Next.isOccupied)
+                                {
+                                    //collision!
+                                }
+                                else
+                                {
+                                    tile.isOccupied = false;
+                                    tile.currentObject = null;
+
+                                    tile.Next.isOccupied = true;
+                                    tile.Next.currentObject = tempCart;
+
+                                    tile.ChangeIcon();
+                                    break;
+                                }
+                            }
+                        }
+                        else if (tile.Next.index == 2)
+                        {
+                            if (tile.Next.isUp)
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                if (tile.Next.isOccupied)
+                                {
+                                    //collision!
+                                }
+                                else
+                                {
+                                    tile.isOccupied = false;
+                                    tile.currentObject = null;
+
+                                    tile.Next.isOccupied = true;
+                                    tile.Next.currentObject = tempCart;
+
+                                    tile.ChangeIcon();
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                    //else TODO: collision check!
+                    //{
+
+                    //}
+                }
+            }
+        }
+
+        private void MoveCartsRow7()
+        {
+            MovableObject tempCart;
+            foreach (var tile in board.tileList7)
+            {
+                if (tile.isOccupied)
+                {
+
+                    tempCart = tile.currentObject;
+                    if (tile.Next.GetType() != typeof(SwitchTile))
+                    {
+                        if (!tile.Next.isOccupied)
+                        {
+                            tile.isOccupied = false;
+                            tile.currentObject = null;
+
+                            tile.Next.isOccupied = true;
+                            tile.Next.currentObject = tempCart;
+
+                            tile.ChangeIcon();
+                            break;
+                        }
+                    }
+                    else
+                    {
+
+                        
+                    }
+
+                    //else TODO: collision check!
+                    //{
+
+                    //}
+                }
+            }
+        }
+
+        private void MoveCartsRow8()
+        {
+            
+        }
+
+        public void AddCart()
+        {
+            int random = new Random().Next(1, 4);
+            switch (random)
+            {
+                case 1:
+                    if (!board.tileList3[0].isOccupied)
+                    {
+                        board.tileList3[0].isOccupied = true;
+                        MovableObject cart = new Cart();
+                        board.tileList3[0].currentObject = cart;
+                    }
+                    break;
+                case 2:
+                    if (!board.tileList5[0].isOccupied)
+                    {
+                        board.tileList5[0].isOccupied = true;
+                        MovableObject cart = new Cart();
+                        board.tileList5[0].currentObject = cart;
+                    }
+                    break;
+                case 3:
+                    if (!board.tileList7[0].isOccupied)
+                    {
+                        board.tileList7[0].isOccupied = true;
+                        MovableObject cart = new Cart();
+                        board.tileList7[0].currentObject = cart;
+                    }
+                    break;
+                default:
+                    break;
+            }
+            gameView.ShowBoard();
+        }
+
+        public void Test()
+        {
+            MoveCart();
+            AddCart();
+        }
+    }
 }
 

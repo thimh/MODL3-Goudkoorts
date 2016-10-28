@@ -13,6 +13,7 @@ namespace Model
 
 	public class MovableObject
 	{
+        public virtual string icon { get; set; }
 	}
 }
 

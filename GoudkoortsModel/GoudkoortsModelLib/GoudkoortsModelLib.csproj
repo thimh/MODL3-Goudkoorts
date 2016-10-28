@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GeneratedCode\Controller\GameController.cs" />
+    <Compile Include="GeneratedCode\Controller\OutputController.cs" />
     <Compile Include="GeneratedCode\Model\BaseTile.cs" />
     <Compile Include="GeneratedCode\Model\Board.cs" />
     <Compile Include="GeneratedCode\Model\Cart.cs" />

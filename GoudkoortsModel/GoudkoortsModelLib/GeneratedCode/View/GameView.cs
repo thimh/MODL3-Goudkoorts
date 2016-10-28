@@ -15,14 +15,13 @@ namespace View
 	    public GameView(GameController controller)
 	    {
 	        this.controller = controller;
-	        ShowBoard();
+            controller.board.MakeRows();
+            controller.board.LinkLinks();
 	    }
 
 		public virtual void ShowBoard()
 		{
-			controller.board.MakeRows();
-            controller.board.LinkLinks();
-
+            Console.Clear();
             //row 0
 		    foreach (var tile in controller.board.tileList0)
 		    {
@@ -53,17 +52,17 @@ namespace View
 
             //row 3
             Console.Write("[AA]");
-            for (int i = 0; i < 11; i++)
-            {
-                if (i == 3 || i == 9)
-                {
-                    Console.Write("    ");
-                }
-                else
-                {
-                    Console.Write(controller.board.tileList3[i].icon);
-                }
+		    for (int i = 0; i < 3; i++)
+		    {
+                Console.Write(controller.board.tileList3[i].icon);
             }
+            Console.Write("    ");
+            for (int i = 4; i < 9; i++)
+            {
+                Console.Write(controller.board.tileList3[i].icon);
+            }
+            Console.Write("    ");
+            Console.Write(controller.board.tileList3[9].icon);
             Console.WriteLine("");
 
             //row 4
@@ -130,8 +129,6 @@ namespace View
 		    {
 		        Console.Write(tile.icon);
 		    }
-
-            Console.ReadLine();
 		}
 
 		public virtual void ShowGameOver()
