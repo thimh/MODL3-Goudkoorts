@@ -227,7 +227,7 @@ namespace Model
             tileList3[5].Next = tileList3[6];
             tileList3[6].Next = tileList3[7];
             tileList3[7].Next = tileList4[3];
-            tileList3[8].Next = tileList2[0];
+            tileList3[9].Next = tileList2[0];
 
             //row 4 TODO
 	        tileList4[0].Next = tileList4[1];
@@ -242,7 +242,7 @@ namespace Model
 	        }
 	        tileList4[3].Next = tileList4[4];
             tileList4[4].Next = tileList4[5];
-	        tileList4[5].Next = tileList3[8];
+	        tileList4[5].Next = tileList3[9];
 
 
             //row 5 
@@ -276,7 +276,8 @@ namespace Model
             tileList7[6].Next = tileList7[7];
             tileList7[7].Next = tileList7[8];
             tileList7[8].Next = tileList7[9];
-            tileList7[9].Next = tileList8[10];
+            tileList7[9].Next = tileList7[10];
+            tileList7[10].Next = tileList8[10];
 
             //row 8
             previousTile = null;
