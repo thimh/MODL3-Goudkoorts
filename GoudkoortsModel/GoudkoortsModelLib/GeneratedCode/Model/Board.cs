@@ -188,35 +188,58 @@ namespace Model
 
 	    public void LinkLinks()
 	    {
-	        BaseTile previousTile = null;
-
             //row 0
-	        for (int i = 0; i < tileList0.Count; i++)
-	        {
-	            BaseTile currentTile = tileList0[i];
-	            if (previousTile != null)
-	            {
-	                currentTile.Previous = previousTile;
-	                previousTile.Next = currentTile;
-	            }
-	            previousTile = currentTile;
-            }
+	        tileList0[11].Next = tileList0[10];
+            tileList0[10].Next = tileList0[9];
+            tileList0[9].Next = tileList0[8];
+            tileList0[8].Next = tileList0[7];
+            tileList0[7].Next = tileList0[6];
+            tileList0[6].Next = tileList0[5];
+            tileList0[5].Next = tileList0[4];
+            tileList0[4].Next = tileList0[3];
+            tileList0[3].Next = tileList0[2];
+            tileList0[2].Next = tileList0[1];
+            tileList0[1].Next = tileList0[0];
+            
+            //BaseTile previousTile = null;
+            //for (int i = 0; i < tileList0.Count; i++)
+	        //{
+	        //    BaseTile currentTile = tileList0[i];
+	        //    if (previousTile != null)
+	        //    {
+	        //        currentTile.Previous = previousTile;
+	        //        previousTile.Next = currentTile;
+	        //    }
+	        //    previousTile = currentTile;
+            //}
 
             //row 1
-	        previousTile = null;
-            for (int i = 0; i < tileList1.Count; i++)
-            {
-                BaseTile currentTile = tileList1[i];
-                if (previousTile != null)
-                {
-                    currentTile.Previous = tileList1[i-1];
-                    previousTile.Next = currentTile;
-                }
-                previousTile = currentTile;
-            }
+	        tileList1[11].Next = tileList1[10];
+            tileList1[10].Next = tileList1[9];
+            tileList1[9].Next = tileList1[8];
+            tileList1[8].Next = tileList1[7];
+            tileList1[7].Next = tileList1[6];
+            tileList1[6].Next = tileList1[5];
+            tileList1[5].Next = tileList1[4];
+            tileList1[4].Next = tileList1[3];
+            tileList1[3].Next = tileList1[2];
+            tileList1[2].Next = tileList1[1];
+            tileList1[1].Next = tileList1[0];
+
+            //previousTile = null;
+            //for (int i = 0; i < tileList1.Count; i++)
+            //{
+            //    BaseTile currentTile = tileList1[i];
+            //    if (previousTile != null)
+            //    {
+            //        currentTile.Previous = tileList1[i-1];
+            //        previousTile.Next = currentTile;
+            //    }
+            //    previousTile = currentTile;
+            //}
 
             //row 2 
-	        tileList2[0].Next = tileList1[11];
+            tileList2[0].Next = tileList1[11];
 
             //row 3 
 	        tileList3[0].Next = tileList3[1];
@@ -280,17 +303,28 @@ namespace Model
             tileList7[10].Next = tileList8[10];
 
             //row 8
-            previousTile = null;
-            for (int i = 0; i < tileList8.Count; i++)
-            {
-                BaseTile currentTile = tileList8[i];
-                if (previousTile != null)
-                {
-                    currentTile.Previous = previousTile;
-                    previousTile.Next = currentTile;
-                }
-                previousTile = currentTile;
-            }
+	        tileList8[10].Next = tileList8[9];
+            tileList8[9].Next = tileList8[8];
+            tileList8[8].Next = tileList8[7];
+            tileList8[7].Next = tileList8[6];
+            tileList8[6].Next = tileList8[5];
+            tileList8[5].Next = tileList8[4];
+            tileList8[4].Next = tileList8[3];
+            tileList8[3].Next = tileList8[2];
+            tileList8[2].Next = tileList8[1];
+            tileList8[1].Next = tileList8[0];
+
+            //previousTile = null;
+            //for (int i = 0; i < tileList8.Count; i++)
+            //{
+            //    BaseTile currentTile = tileList8[i];
+            //    if (previousTile != null)
+            //    {
+            //        currentTile.Previous = previousTile;
+            //        previousTile.Next = currentTile;
+            //    }
+            //    previousTile = currentTile;
+            //}
         }
 
         public void UpdateLinks()
@@ -298,68 +332,6 @@ namespace Model
             //update the links for the switches!
 	        
 	    }
-
-	    //public void Test()
-	    //{
-     //       MakeRows();
-     //       LinkLinks();
-
-	    //    foreach (var tile in tileList0)
-	    //    {
-	    //        Console.Write(tile.icon);
-	    //    }
-     //       Console.WriteLine("");
-     //       foreach (var tile in tileList1)
-     //       {
-     //           Console.Write(tile.icon);
-     //       }
-     //       Console.WriteLine("");
-     //       foreach (var tile in tileList2)
-     //       {
-     //           Console.Write(tile.icon);
-     //       }
-     //       Console.WriteLine("");
-     //       foreach (var tile in tileList3)
-     //       {
-     //           Console.Write(tile.icon);
-     //       }
-     //       Console.WriteLine("");
-     //       foreach (var tile in tileList4)
-     //       {
-     //           Console.Write(tile.icon);
-     //       }
-     //       Console.WriteLine("");
-     //       foreach (var tile in tileList5)
-     //       {
-     //           Console.Write(tile.icon);
-     //       }
-     //       Console.WriteLine("");
-     //       foreach (var tile in tileList6)
-     //       {
-     //           Console.Write(tile.icon);
-     //       }
-     //       Console.WriteLine("");
-     //       foreach (var tile in tileList7)
-     //       {
-     //           Console.Write(tile.icon);
-     //       }
-     //       Console.WriteLine("");
-     //       foreach (var tile in tileList8)
-     //       {
-     //           Console.Write(tile.icon);
-     //       }
-     //       Console.WriteLine("");
-     //       Console.WriteLine("");
-     //       Console.WriteLine("");
-
-     //       Console.WriteLine(tileList3[2].icon + "" + tileList3[2].Next.icon);
-     //       Console.WriteLine(tileList4[2].icon + "" + tileList4[2].Next.icon);
-     //       Console.WriteLine(tileList4[3].icon + "" + tileList4[3].Next.icon);
-     //       Console.WriteLine(tileList7[5].icon + "" + tileList7[5].Next.icon);
-     //       Console.WriteLine(tileList6[2].icon + "" + tileList6[2].Next.icon);
-     //       Console.ReadLine();
-	    //}
-
 	}
 }
 

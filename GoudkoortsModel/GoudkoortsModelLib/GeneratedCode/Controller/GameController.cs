@@ -64,13 +64,12 @@ namespace Controller
             AddCart();
             MoveCart();
             Console.WriteLine("");
-            Console.WriteLine("Switch 2:");
-            Console.WriteLine(board.tileList4[2].isOccupied);
-            Console.WriteLine(board.tileList4[2].Next);
-            Console.WriteLine(board.tileList4[2].Next.index);
-            Console.WriteLine(board.tileList4[2].Next.icon);
-            //Console.WriteLine("Switch 4:");
-            //Console.WriteLine(board.tileList6[2].isOccupied);
+            Console.WriteLine("Row 8:");
+            Console.WriteLine(board.tileList8[10].isOccupied);
+            Console.WriteLine(board.tileList8[10].Next);
+            Console.WriteLine(board.tileList8[10].Next.isOccupied);
+            Console.WriteLine(board.tileList8[10].Next.index);
+            Console.WriteLine(board.tileList8[10].Next.icon);
             //Test();
         }
 
@@ -104,8 +103,8 @@ namespace Controller
                 {
 
                     tempCart = tile.currentObject;
-                    
-                    if (!tile.Next.isOccupied)
+
+                    if (tile.Next != null)
                     {
                         tile.isOccupied = false;
                         tile.currentObject = null;
@@ -116,12 +115,14 @@ namespace Controller
                         tile.ChangeIcon();
                         break;
                     }
-                    //check if (tile.index == 0)
-                        //make the cart disappear
-                    //else TODO: collision check!
-                    //{
+                    else
+                    {
+                        tile.isOccupied = false;
+                        tile.currentObject = null;
 
-                    //}
+                        tile.ChangeIcon();
+                        break;
+                    }
                 }
             }
         }
@@ -638,23 +639,26 @@ namespace Controller
 
                     tempCart = tile.currentObject;
 
-                    if (!tile.Previous.isOccupied)
+                    if (tile.Next != null)
                     {
-                        tile.isOccupied = false;
-                        tile.currentObject = null;
+                        if (!tile.Next.isOccupied)
+                        {
+                            tile.isOccupied = false;
+                            tile.currentObject = null;
 
-                        tile.Previous.isOccupied = true;
-                        tile.Previous.currentObject = tempCart;
+                            tile.Next.isOccupied = true;
+                            tile.Next.currentObject = tempCart;
 
-                        tile.ChangeIcon();
-                        break;
-                    }
-                    else
-                    {
-                        //if(tile.Next.index > 7)
-                        //usually a collision check but these are safe spaces
-                        //check if(tile.index == 0)
+                            tile.ChangeIcon();
+                            break;
+                        }
+                        else
+                        {
+                            //if(tile.Next.index > 7)
+                            //usually a collision check but these are safe spaces
+                            //check if(tile.index == 0)
                             //perform no aciton
+                        }
                     }
                     
 
