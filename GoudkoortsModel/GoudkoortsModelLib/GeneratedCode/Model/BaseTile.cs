@@ -24,8 +24,12 @@ namespace Model
 	            if (!isOccupied)
 	            {
 	                return "[  ]";
-	            }
-	            else
+                }
+                else if (hasShip)
+                {
+                    return "<0" + ship.loadAmount + ">";
+                }
+                else
 	            {
 	                return "[00]";
 	            }
@@ -53,7 +57,7 @@ namespace Model
             }
             else if (hasShip)
             {
-                icon = "<" + ship.loadAmount + ">";
+                icon = "<0" + ship.loadAmount + ">";
             }
             else
             {

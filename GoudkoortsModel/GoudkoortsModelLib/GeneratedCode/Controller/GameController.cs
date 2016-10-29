@@ -92,7 +92,7 @@ namespace Controller
             Console.WriteLine(board.tileList8[10].Next.index);
             Console.WriteLine(board.tileList8[10].Next.icon);
             Console.WriteLine("");
-            Console.WriteLine(board.tileList0[9].icon);
+            Console.WriteLine(board.tileList0[9].ship.icon);
             //Test();
         }
 
@@ -740,7 +740,7 @@ namespace Controller
             tile.ship = new Ship();
             tile.hasShip = true;
 
-            tile.ship.loadAmount = 00;
+            tile.ship.loadAmount = 0;
 
             tile.ChangeIcon();
         }

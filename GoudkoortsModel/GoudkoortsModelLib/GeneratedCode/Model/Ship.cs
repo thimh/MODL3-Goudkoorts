@@ -19,7 +19,20 @@ namespace Model
 			set;
 		}
 
-        public override string icon { get { return "<" + loadAmount + ">"; } }
+	    public override string icon
+	    {
+	        get
+	        {
+	            if (loadAmount < 10)
+	            {
+	                return "<0" + loadAmount + ">";
+	            }
+	            else
+	            {
+                    return "<" + loadAmount + ">";
+                }
+	        }
+	    }
 
 	}
 }
