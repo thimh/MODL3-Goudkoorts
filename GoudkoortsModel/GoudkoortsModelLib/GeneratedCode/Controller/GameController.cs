@@ -68,7 +68,7 @@ namespace Controller
             Console.WriteLine(board.tileList4[2].isOccupied);
             Console.WriteLine(board.tileList4[2].Next);
             Console.WriteLine(board.tileList4[2].Next.index);
-            Console.WriteLine(board.tileList4[1].Next.icon);
+            Console.WriteLine(board.tileList4[2].Next.icon);
             //Console.WriteLine("Switch 4:");
             //Console.WriteLine(board.tileList6[2].isOccupied);
             //Test();
@@ -105,19 +105,17 @@ namespace Controller
 
                     tempCart = tile.currentObject;
                     
-                        if (!tile.Next.isOccupied)
-                        {
-                            tile.isOccupied = false;
-                            tile.currentObject = null;
+                    if (!tile.Next.isOccupied)
+                    {
+                        tile.isOccupied = false;
+                        tile.currentObject = null;
 
-                            tile.Next.isOccupied = true;
-                            tile.Next.currentObject = tempCart;
+                        tile.Next.isOccupied = true;
+                        tile.Next.currentObject = tempCart;
 
-                            tile.ChangeIcon();
-                            break;
-                        }
-                    
-                    
+                        tile.ChangeIcon();
+                        break;
+                    }
                     //check if (tile.index == 0)
                         //make the cart disappear
                     //else TODO: collision check!
@@ -184,11 +182,7 @@ namespace Controller
                             }
                             else
                             {
-                                if (tile.Next.isOccupied)
-                                {
-                                    //collision!
-                                }
-                                else
+                                if (!tile.Next.isOccupied)
                                 {
                                     tile.isOccupied = false;
                                     tile.currentObject = null;
@@ -198,6 +192,10 @@ namespace Controller
 
                                     tile.ChangeIcon();
                                     break;
+                                }
+                                else
+                                {
+                                    //collision!
                                 }
                             }
                         }
@@ -229,7 +227,7 @@ namespace Controller
 
                     if (!(tile.GetType() == typeof(SwitchTile)))
                     {
-                        if (!tile.Next.isOccupied && tile.currentObject.hasMoved == false)
+                        if (!tile.Next.isOccupied/* && tile.currentObject.hasMoved == false*/)
                         {
                             tile.isOccupied = false;
                             tile.currentObject = null;
@@ -247,7 +245,7 @@ namespace Controller
                         {
                             tile.Next = board.tileList3[3];
 
-                            if (!tile.Next.isOccupied && tile.currentObject.hasMoved == false)
+                            if (!tile.Next.isOccupied/* && tile.currentObject.hasMoved == false*/)
                             {
                                 tile.isOccupied = false;
                                 tile.currentObject = null;
@@ -263,7 +261,7 @@ namespace Controller
                         {
                             tile.Next = board.tileList5[3];
 
-                            if (!tile.Next.isOccupied && tile.currentObject.hasMoved == false)
+                            if (!tile.Next.isOccupied/* && tile.currentObject.hasMoved == false*/)
                             {
                                 tile.isOccupied = false;
                                 tile.currentObject = null;
@@ -277,7 +275,7 @@ namespace Controller
                         }
                         else
                         {
-                            if (!tile.Next.isOccupied && tile.currentObject.hasMoved == false)
+                            if (!tile.Next.isOccupied/* && tile.currentObject.hasMoved == false*/)
                             {
                                 tile.isOccupied = false;
                                 tile.currentObject = null;
@@ -290,94 +288,72 @@ namespace Controller
                             }
                         }
                     }
+                    /*if (tile.Next.GetType() != typeof(SwitchTile))
+                    {
+                        if (!tile.Next.isOccupied && tile.currentObject.hasMoved == false)
+                        {
+                            tile.isOccupied = false;
+                            tile.currentObject = null;
 
+                            tile.Next.isOccupied = true;
+                            tile.Next.currentObject = tempCart;
 
+                            tile.ChangeIcon();
+                            tile.currentObject.hasMoved = true;
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        if (tile.index == 2)
+                        {
+                            if (tile.isUp)
+                            {
+                                tile.Next = board.tileList3[3];
+                                //move to tileList3[3]
+                                if (tile.Next.isOccupied)
+                                {
+                                    //collision!
+                                }
+                                else
+                                {
 
+                                    tile.isOccupied = false;
+                                    tile.currentObject = null;
 
+                                    tile.Next.isOccupied = true;
+                                    tile.Next.currentObject = tempCart;
 
+                                    tile.ChangeIcon();
+                                    tile.currentObject.hasMoved = true;
+                                    break;
+                                }
+                            }
+                            else
+                            {
+                                tile.Next = board.tileList5[3];
+                                //move to tileList5[3]
+                                if (tile.Next.isOccupied)
+                                {
+                                    //collision!
+                                }
+                                else
+                                {
 
+                                    tile.isOccupied = false;
+                                    tile.currentObject = null;
 
+                                    tile.Next.isOccupied = true;
+                                    tile.Next.currentObject = tempCart;
 
+                                    tile.ChangeIcon();
+                                    tile.currentObject.hasMoved = true;
+                                    break;
+                                }
+                            }
+                        }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    //if (tile.Next.GetType() != typeof(SwitchTile))
-                    //{
-                    //    if (!tile.Next.isOccupied && tile.currentObject.hasMoved == false)
-                    //    {
-                    //        tile.isOccupied = false;
-                    //        tile.currentObject = null;
-
-                    //        tile.Next.isOccupied = true;
-                    //        tile.Next.currentObject = tempCart;
-
-                    //        tile.ChangeIcon();
-                    //        tile.currentObject.hasMoved = true;
-                    //        break;
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    if (tile.index == 2)
-                    //    {
-                    //        if (tile.isUp)
-                    //        {
-                    //            tile.Next = board.tileList3[3];
-                    //            //move to tileList3[3]
-                    //            if (tile.Next.isOccupied)
-                    //            {
-                    //                //collision!
-                    //            }
-                    //            else
-                    //            {
-
-                    //                tile.isOccupied = false;
-                    //                tile.currentObject = null;
-                                    
-                    //                tile.Next.isOccupied = true;
-                    //                tile.Next.currentObject = tempCart;
-
-                    //                tile.ChangeIcon();
-                    //                tile.currentObject.hasMoved = true;
-                    //                break;
-                    //            }
-                    //        }
-                    //        else
-                    //        {
-                    //            tile.Next = board.tileList5[3];
-                    //            //move to tileList5[3]
-                    //            if (tile.Next.isOccupied)
-                    //            {
-                    //                //collision!
-                    //            }
-                    //            else
-                    //            {
-                                    
-                    //                tile.isOccupied = false;
-                    //                tile.currentObject = null;
-
-                    //                tile.Next.isOccupied = true;
-                    //                tile.Next.currentObject = tempCart;
-
-                    //                tile.ChangeIcon();
-                    //                tile.currentObject.hasMoved = true;
-                    //                break;
-                    //            }
-                    //        }
-                    //    }
-                        
-                    //}
+                    }*/
 
                     //else TODO: collision check!
                     //{
@@ -420,11 +396,7 @@ namespace Controller
                             }
                             else
                             {
-                                if (tile.Next.isOccupied)
-                                {
-                                    //collision!
-                                }
-                                else
+                                if (!tile.Next.isOccupied)
                                 {
                                     tile.isOccupied = false;
                                     tile.currentObject = null;
@@ -434,6 +406,10 @@ namespace Controller
 
                                     tile.ChangeIcon();
                                     break;
+                                }
+                                else
+                                {
+                                    //collision!
                                 }
                             }
                         }
@@ -459,7 +435,7 @@ namespace Controller
 
                     if (!(tile.GetType() == typeof(SwitchTile)))
                     {
-                        if (!tile.Next.isOccupied && tile.currentObject.hasMoved == false)
+                        if (!tile.Next.isOccupied)
                         {
                             tile.isOccupied = false;
                             tile.currentObject = null;
@@ -477,7 +453,7 @@ namespace Controller
                         {
                             tile.Next = board.tileList5[5];
 
-                            if (!tile.Next.isOccupied && tile.currentObject.hasMoved == false)
+                            if (!tile.Next.isOccupied)
                             {
                                 tile.isOccupied = false;
                                 tile.currentObject = null;
@@ -493,7 +469,7 @@ namespace Controller
                         {
                             tile.Next = board.tileList7[6];
 
-                            if (!tile.Next.isOccupied && tile.currentObject.hasMoved == false)
+                            if (!tile.Next.isOccupied)
                             {
                                 tile.isOccupied = false;
                                 tile.currentObject = null;
@@ -507,7 +483,7 @@ namespace Controller
                         }
                         else
                         {
-                            if (!tile.Next.isOccupied && tile.currentObject.hasMoved == false)
+                            if (!tile.Next.isOccupied)
                             {
                                 tile.isOccupied = false;
                                 tile.currentObject = null;
@@ -520,69 +496,68 @@ namespace Controller
                             }
                         }
                     }
+                    /*if (tile.Next.GetType() != typeof(SwitchTile))
+                    {
+                        if (!tile.Next.isOccupied)
+                        {
+                            tile.isOccupied = false;
+                            tile.currentObject = null;
 
-                    //if (tile.Next.GetType() != typeof(SwitchTile))
-                    //{
-                    //    if (!tile.Next.isOccupied)
-                    //    {
-                    //        tile.isOccupied = false;
-                    //        tile.currentObject = null;
+                            tile.Next.isOccupied = true;
+                            tile.Next.currentObject = tempCart;
 
-                    //        tile.Next.isOccupied = true;
-                    //        tile.Next.currentObject = tempCart;
+                            tile.ChangeIcon();
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        if (tile.index == 2)
+                        {
+                            if (tile.isUp)
+                            {
+                                tile.Next = board.tileList5[5];
+                                //move to tileList5[5]
+                                if (tile.Next.isOccupied)
+                                {
+                                    //collision!
+                                }
+                                else
+                                {
 
-                    //        tile.ChangeIcon();
-                    //        break;
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    if (tile.index == 2)
-                    //    {
-                    //        if (tile.isUp)
-                    //        {
-                    //            tile.Next = board.tileList5[5];
-                    //            //move to tileList5[5]
-                    //            if (tile.Next.isOccupied)
-                    //            {
-                    //                //collision!
-                    //            }
-                    //            else
-                    //            {
+                                    tile.isOccupied = false;
+                                    tile.currentObject = null;
 
-                    //                tile.isOccupied = false;
-                    //                tile.currentObject = null;
+                                    tile.Next.isOccupied = true;
+                                    tile.Next.currentObject = tempCart;
 
-                    //                tile.Next.isOccupied = true;
-                    //                tile.Next.currentObject = tempCart;
+                                    tile.ChangeIcon();
+                                    break;
+                                }
+                            }
+                            else
+                            {
+                                tile.Next = board.tileList7[6];
+                                //move to tileList7[6]
+                                if (tile.Next.isOccupied)
+                                {
+                                    //collision!
+                                }
+                                else
+                                {
 
-                    //                tile.ChangeIcon();
-                    //                break;
-                    //            }
-                    //        }
-                    //        else
-                    //        {
-                    //            tile.Next = board.tileList7[6];
-                    //            //move to tileList7[6]
-                    //            if (tile.Next.isOccupied)
-                    //            {
-                    //                //collision!
-                    //            }
-                    //            else
-                    //            {
+                                    tile.isOccupied = false;
+                                    tile.currentObject = null;
 
-                    //                tile.isOccupied = false;
-                    //                tile.currentObject = null;
+                                    tile.Next.isOccupied = true;
+                                    tile.Next.currentObject = tempCart;
 
-                    //                tile.Next.isOccupied = true;
-                    //                tile.Next.currentObject = tempCart;
-
-                    //                tile.ChangeIcon();
-                    //                break;
-                    //            }
-                    //        }
-                    //    }
-                    //}
+                                    tile.ChangeIcon();
+                                    break;
+                                }
+                            }
+                        }
+                    }*/
 
                     //else TODO: collision check!
                     //{
@@ -625,11 +600,7 @@ namespace Controller
                             }
                             else
                             {
-                                if (tile.Next.isOccupied)
-                                {
-                                    //collision!
-                                }
-                                else
+                                if (!tile.Next.isOccupied)
                                 {
                                     tile.isOccupied = false;
                                     tile.currentObject = null;
@@ -639,6 +610,10 @@ namespace Controller
 
                                     tile.ChangeIcon();
                                     break;
+                                }
+                                else
+                                {
+                                    //collision!
                                 }
                             }
                         }
