@@ -16,6 +16,8 @@ namespace Model
         public virtual string icon { get; set; }
 
         public bool hasMoved { get; set; }
+
+        public virtual int loadAmount { get; set; }
 	}
 }
 

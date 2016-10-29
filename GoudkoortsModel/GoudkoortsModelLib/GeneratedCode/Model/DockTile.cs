@@ -14,8 +14,6 @@ namespace Model
 	public class DockTile : BaseTile
 	{
         public override string icon { get { return "[_D]"; } }
-
-        public bool shipAtDock { get; set; }
     }
 }
 

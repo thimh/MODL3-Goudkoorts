@@ -45,10 +45,26 @@ namespace Controller
             //board.tileList1[5].currentObject = new Cart();
             //board.tileList1[5].isOccupied = true;
 
-            Timer timer = new Timer();
-            timer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
-            timer.Interval = 100; //TODO: interval should be changed depenting on score
-            timer.Enabled = true;
+            AddShip();
+            if (board.tileList0[9].ship.loadAmount == 10)
+            {
+                board.tileList0[9].hasShip = false;
+                board.tileList0[9].ship = null;
+
+                AddShip();
+
+                board.score += 10;
+            }
+
+            Timer addCartTimer = new Timer();
+            addCartTimer.Elapsed += new ElapsedEventHandler(OnTimedEventAddCart);
+            addCartTimer.Interval = 1000;
+            addCartTimer.Enabled = true;
+
+            Timer moveTimer = new Timer();
+            moveTimer.Elapsed += new ElapsedEventHandler(OnTimedEventMove);
+            moveTimer.Interval = 100; //TODO: interval should be changed depenting on score
+            moveTimer.Enabled = true;
             
             //while (Console.Read() != 'q') ;
             while (!isGameOver)
@@ -57,11 +73,16 @@ namespace Controller
             }
         }
 
-        public void OnTimedEvent(object sender, ElapsedEventArgs e)
+        public void OnTimedEventAddCart(object sender, ElapsedEventArgs e)
+        {
+            AddCart();
+        }
+
+        public void OnTimedEventMove(object sender, ElapsedEventArgs e)
         {
             //TODO: move all movable opbjects
             //TODO: switch 2 causes problems
-            AddCart();
+            //AddCart();
             MoveCart();
             Console.WriteLine("");
             Console.WriteLine("Row 8:");
@@ -70,6 +91,8 @@ namespace Controller
             Console.WriteLine(board.tileList8[10].Next.isOccupied);
             Console.WriteLine(board.tileList8[10].Next.index);
             Console.WriteLine(board.tileList8[10].Next.icon);
+            Console.WriteLine("");
+            Console.WriteLine(board.tileList0[9].icon);
             //Test();
         }
 
@@ -101,8 +124,13 @@ namespace Controller
             {
                 if (tile.isOccupied)
                 {
-
                     tempCart = tile.currentObject;
+
+                    if (tile.GetType() == typeof(DockTile) && tile.hasShip)
+                    {
+                        tile.ship.loadAmount++;
+                        board.score++;
+                    }
 
                     if (tile.Next != null)
                     {
@@ -704,6 +732,17 @@ namespace Controller
                     break;
             }
             gameView.ShowBoard();
+        }
+
+        public void AddShip()
+        {
+            var tile = board.tileList0[9];
+            tile.ship = new Ship();
+            tile.hasShip = true;
+
+            tile.ship.loadAmount = 00;
+
+            tile.ChangeIcon();
         }
 
         public void Test()

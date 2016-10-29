@@ -15,6 +15,8 @@ namespace Model
     {
         public virtual bool isOccupied { get; set; }
 
+        public virtual MovableObject ship { get; set; }
+
         public virtual string icon
 	    {
 	        get
@@ -33,6 +35,8 @@ namespace Model
 
         public virtual bool isUp { get; set; }
 
+        public virtual bool hasShip { get; set; }
+
         public virtual BaseTile Next { get; set; }
 
         public virtual BaseTile Previous { get; set; }
@@ -46,6 +50,10 @@ namespace Model
             if (isOccupied)
             {
                 icon = "[00]";
+            }
+            else if (hasShip)
+            {
+                icon = "<" + ship.loadAmount + ">";
             }
             else
             {

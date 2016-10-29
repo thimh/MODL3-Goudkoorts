@@ -129,7 +129,12 @@ namespace View
 		    {
 		        Console.Write(tile.icon);
 		    }
-		}
+
+            //score
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("Score: " + controller.board.score);
+        }
 
 		public virtual void ShowGameOver()
 		{

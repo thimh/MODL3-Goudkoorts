@@ -32,6 +32,8 @@ namespace Model
 			set;
 		}
 
+	    public int score { get; set; }
+
 	    public Board()
 	    {
 	        tileList0 = new List<BaseTile>();

@@ -13,21 +13,13 @@ namespace Model
 
 	public class Ship : MovableObject
 	{
-		public virtual int loadAmount
+	    public override int loadAmount
 		{
 			get;
 			set;
 		}
 
-		public virtual void CheckLoad()
-		{
-			throw new System.NotImplementedException();
-		}
-
-		public virtual void AddLoad()
-		{
-			throw new System.NotImplementedException();
-		}
+        public override string icon { get { return "<" + loadAmount + ">"; } }
 
 	}
 }
