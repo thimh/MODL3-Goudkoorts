@@ -42,12 +42,12 @@ namespace Controller
 
         public void PlayGame()
         {
-            //board.tileList3[0].currentObject = new Cart();
-            //board.tileList3[0].isOccupied = true;
+            //board.tileList1[5].currentObject = new Cart();
+            //board.tileList1[5].isOccupied = true;
 
             Timer timer = new Timer();
             timer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
-            timer.Interval = 2000; //TODO: interval should be changed depenting on score
+            timer.Interval = 100; //TODO: interval should be changed depenting on score
             timer.Enabled = true;
             
             //while (Console.Read() != 'q') ;
@@ -60,8 +60,17 @@ namespace Controller
         public void OnTimedEvent(object sender, ElapsedEventArgs e)
         {
             //TODO: move all movable opbjects
+            //TODO: switch 2 causes problems
             AddCart();
             MoveCart();
+            Console.WriteLine("");
+            Console.WriteLine("Switch 2:");
+            Console.WriteLine(board.tileList4[2].isOccupied);
+            Console.WriteLine(board.tileList4[2].Next);
+            Console.WriteLine(board.tileList4[2].Next.index);
+            Console.WriteLine(board.tileList4[1].Next.icon);
+            //Console.WriteLine("Switch 4:");
+            //Console.WriteLine(board.tileList6[2].isOccupied);
             //Test();
         }
 
@@ -95,8 +104,7 @@ namespace Controller
                 {
 
                     tempCart = tile.currentObject;
-                    if (tile.Next.GetType() != typeof(SwitchTile))
-                    {
+                    
                         if (!tile.Next.isOccupied)
                         {
                             tile.isOccupied = false;
@@ -108,9 +116,10 @@ namespace Controller
                             tile.ChangeIcon();
                             break;
                         }
-                    }
                     
-
+                    
+                    //check if (tile.index == 0)
+                        //make the cart disappear
                     //else TODO: collision check!
                     //{
 
@@ -167,26 +176,29 @@ namespace Controller
                     }
                     else
                     {
-                        if (tile.Next.isUp)
+                        if (tile.Next.GetType() == typeof(SwitchTile))
                         {
-                            break;
-                        }
-                        else
-                        {
-                            if (tile.Next.isOccupied)
+                            if (!tile.Next.isUp)
                             {
-                                //collision!
+                                break;
                             }
                             else
                             {
-                                tile.isOccupied = false;
-                                tile.currentObject = null;
+                                if (tile.Next.isOccupied)
+                                {
+                                    //collision!
+                                }
+                                else
+                                {
+                                    tile.isOccupied = false;
+                                    tile.currentObject = null;
 
-                                tile.Next.isOccupied = true;
-                                tile.Next.currentObject = tempCart;
+                                    tile.Next.isOccupied = true;
+                                    tile.Next.currentObject = tempCart;
 
-                                tile.ChangeIcon();
-                                break;
+                                    tile.ChangeIcon();
+                                    break;
+                                }
                             }
                         }
                     }
@@ -201,16 +213,23 @@ namespace Controller
 
         private void MoveCartsRow4()
         {
+            foreach (var tile in board.tileList4)
+            {
+                if (tile.isOccupied)
+                {
+                    tile.currentObject.hasMoved = false;
+                }
+            }
             MovableObject tempCart;
             foreach (var tile in board.tileList4)
             {
                 if (tile.isOccupied)
                 {
-
                     tempCart = tile.currentObject;
-                    if (tile.Next.GetType() != typeof(SwitchTile))
+
+                    if (!(tile.GetType() == typeof(SwitchTile)))
                     {
-                        if (!tile.Next.isOccupied)
+                        if (!tile.Next.isOccupied && tile.currentObject.hasMoved == false)
                         {
                             tile.isOccupied = false;
                             tile.currentObject = null;
@@ -224,17 +243,41 @@ namespace Controller
                     }
                     else
                     {
-                        if (tile.Next.isUp)
+                        if (tile.index == 2 && tile.isUp)
                         {
-                            break;
+                            tile.Next = board.tileList3[3];
+
+                            if (!tile.Next.isOccupied && tile.currentObject.hasMoved == false)
+                            {
+                                tile.isOccupied = false;
+                                tile.currentObject = null;
+
+                                tile.Next.isOccupied = true;
+                                tile.Next.currentObject = tempCart;
+
+                                tile.ChangeIcon();
+                                break;
+                            }
+                        }
+                        else if (!tile.isUp && tile.index == 2)
+                        {
+                            tile.Next = board.tileList5[3];
+
+                            if (!tile.Next.isOccupied && tile.currentObject.hasMoved == false)
+                            {
+                                tile.isOccupied = false;
+                                tile.currentObject = null;
+
+                                tile.Next.isOccupied = true;
+                                tile.Next.currentObject = tempCart;
+
+                                tile.ChangeIcon();
+                                break;
+                            }
                         }
                         else
                         {
-                            if (tile.Next.isOccupied)
-                            {
-                                //collision!
-                            }
-                            else
+                            if (!tile.Next.isOccupied && tile.currentObject.hasMoved == false)
                             {
                                 tile.isOccupied = false;
                                 tile.currentObject = null;
@@ -247,6 +290,94 @@ namespace Controller
                             }
                         }
                     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    //if (tile.Next.GetType() != typeof(SwitchTile))
+                    //{
+                    //    if (!tile.Next.isOccupied && tile.currentObject.hasMoved == false)
+                    //    {
+                    //        tile.isOccupied = false;
+                    //        tile.currentObject = null;
+
+                    //        tile.Next.isOccupied = true;
+                    //        tile.Next.currentObject = tempCart;
+
+                    //        tile.ChangeIcon();
+                    //        tile.currentObject.hasMoved = true;
+                    //        break;
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    if (tile.index == 2)
+                    //    {
+                    //        if (tile.isUp)
+                    //        {
+                    //            tile.Next = board.tileList3[3];
+                    //            //move to tileList3[3]
+                    //            if (tile.Next.isOccupied)
+                    //            {
+                    //                //collision!
+                    //            }
+                    //            else
+                    //            {
+
+                    //                tile.isOccupied = false;
+                    //                tile.currentObject = null;
+                                    
+                    //                tile.Next.isOccupied = true;
+                    //                tile.Next.currentObject = tempCart;
+
+                    //                tile.ChangeIcon();
+                    //                tile.currentObject.hasMoved = true;
+                    //                break;
+                    //            }
+                    //        }
+                    //        else
+                    //        {
+                    //            tile.Next = board.tileList5[3];
+                    //            //move to tileList5[3]
+                    //            if (tile.Next.isOccupied)
+                    //            {
+                    //                //collision!
+                    //            }
+                    //            else
+                    //            {
+                                    
+                    //                tile.isOccupied = false;
+                    //                tile.currentObject = null;
+
+                    //                tile.Next.isOccupied = true;
+                    //                tile.Next.currentObject = tempCart;
+
+                    //                tile.ChangeIcon();
+                    //                tile.currentObject.hasMoved = true;
+                    //                break;
+                    //            }
+                    //        }
+                    //    }
+                        
+                    //}
 
                     //else TODO: collision check!
                     //{
@@ -281,26 +412,29 @@ namespace Controller
                     }
                     else
                     {
-                        if (tile.Next.isUp)
+                        if (tile.Next.GetType() == typeof(SwitchTile))
                         {
-                            break;
-                        }
-                        else
-                        {
-                            if (tile.Next.isOccupied)
+                            if (tile.Next.isUp)
                             {
-                                //collision!
+                                break;
                             }
                             else
                             {
-                                tile.isOccupied = false;
-                                tile.currentObject = null;
+                                if (tile.Next.isOccupied)
+                                {
+                                    //collision!
+                                }
+                                else
+                                {
+                                    tile.isOccupied = false;
+                                    tile.currentObject = null;
 
-                                tile.Next.isOccupied = true;
-                                tile.Next.currentObject = tempCart;
+                                    tile.Next.isOccupied = true;
+                                    tile.Next.currentObject = tempCart;
 
-                                tile.ChangeIcon();
-                                break;
+                                    tile.ChangeIcon();
+                                    break;
+                                }
                             }
                         }
                     }
@@ -322,9 +456,10 @@ namespace Controller
                 {
 
                     tempCart = tile.currentObject;
-                    if (tile.Next.GetType() != typeof(SwitchTile))
+
+                    if (!(tile.GetType() == typeof(SwitchTile)))
                     {
-                        if (!tile.Next.isOccupied)
+                        if (!tile.Next.isOccupied && tile.currentObject.hasMoved == false)
                         {
                             tile.isOccupied = false;
                             tile.currentObject = null;
@@ -338,57 +473,116 @@ namespace Controller
                     }
                     else
                     {
-                        if (tile.Next.index == 0)
+                        if (tile.index == 2 && tile.isUp)
                         {
-                            if (tile.Next.isUp)
+                            tile.Next = board.tileList5[5];
+
+                            if (!tile.Next.isOccupied && tile.currentObject.hasMoved == false)
                             {
+                                tile.isOccupied = false;
+                                tile.currentObject = null;
+
+                                tile.Next.isOccupied = true;
+                                tile.Next.currentObject = tempCart;
+
+                                tile.ChangeIcon();
                                 break;
-                            }
-                            else
-                            {
-                                if (tile.Next.isOccupied)
-                                {
-                                    //collision!
-                                }
-                                else
-                                {
-                                    tile.isOccupied = false;
-                                    tile.currentObject = null;
-
-                                    tile.Next.isOccupied = true;
-                                    tile.Next.currentObject = tempCart;
-
-                                    tile.ChangeIcon();
-                                    break;
-                                }
                             }
                         }
-                        else if (tile.Next.index == 2)
+                        else if (!tile.isUp && tile.index == 2)
                         {
-                            if (tile.Next.isUp)
+                            tile.Next = board.tileList7[6];
+
+                            if (!tile.Next.isOccupied && tile.currentObject.hasMoved == false)
                             {
+                                tile.isOccupied = false;
+                                tile.currentObject = null;
+
+                                tile.Next.isOccupied = true;
+                                tile.Next.currentObject = tempCart;
+
+                                tile.ChangeIcon();
                                 break;
                             }
-                            else
+                        }
+                        else
+                        {
+                            if (!tile.Next.isOccupied && tile.currentObject.hasMoved == false)
                             {
-                                if (tile.Next.isOccupied)
-                                {
-                                    //collision!
-                                }
-                                else
-                                {
-                                    tile.isOccupied = false;
-                                    tile.currentObject = null;
+                                tile.isOccupied = false;
+                                tile.currentObject = null;
 
-                                    tile.Next.isOccupied = true;
-                                    tile.Next.currentObject = tempCart;
+                                tile.Next.isOccupied = true;
+                                tile.Next.currentObject = tempCart;
 
-                                    tile.ChangeIcon();
-                                    break;
-                                }
+                                tile.ChangeIcon();
+                                break;
                             }
                         }
                     }
+
+                    //if (tile.Next.GetType() != typeof(SwitchTile))
+                    //{
+                    //    if (!tile.Next.isOccupied)
+                    //    {
+                    //        tile.isOccupied = false;
+                    //        tile.currentObject = null;
+
+                    //        tile.Next.isOccupied = true;
+                    //        tile.Next.currentObject = tempCart;
+
+                    //        tile.ChangeIcon();
+                    //        break;
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    if (tile.index == 2)
+                    //    {
+                    //        if (tile.isUp)
+                    //        {
+                    //            tile.Next = board.tileList5[5];
+                    //            //move to tileList5[5]
+                    //            if (tile.Next.isOccupied)
+                    //            {
+                    //                //collision!
+                    //            }
+                    //            else
+                    //            {
+
+                    //                tile.isOccupied = false;
+                    //                tile.currentObject = null;
+
+                    //                tile.Next.isOccupied = true;
+                    //                tile.Next.currentObject = tempCart;
+
+                    //                tile.ChangeIcon();
+                    //                break;
+                    //            }
+                    //        }
+                    //        else
+                    //        {
+                    //            tile.Next = board.tileList7[6];
+                    //            //move to tileList7[6]
+                    //            if (tile.Next.isOccupied)
+                    //            {
+                    //                //collision!
+                    //            }
+                    //            else
+                    //            {
+
+                    //                tile.isOccupied = false;
+                    //                tile.currentObject = null;
+
+                    //                tile.Next.isOccupied = true;
+                    //                tile.Next.currentObject = tempCart;
+
+                    //                tile.ChangeIcon();
+                    //                break;
+                    //            }
+                    //        }
+                    //    }
+                    //}
 
                     //else TODO: collision check!
                     //{
@@ -423,8 +617,32 @@ namespace Controller
                     }
                     else
                     {
+                        if (tile.Next.GetType() == typeof(SwitchTile))
+                        {
+                            if (tile.Next.isUp)
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                if (tile.Next.isOccupied)
+                                {
+                                    //collision!
+                                }
+                                else
+                                {
+                                    tile.isOccupied = false;
+                                    tile.currentObject = null;
 
-                        
+                                    tile.Next.isOccupied = true;
+                                    tile.Next.currentObject = tempCart;
+
+                                    tile.ChangeIcon();
+                                    break;
+                                }
+                            }
+                        }
+
                     }
 
                     //else TODO: collision check!
@@ -437,7 +655,41 @@ namespace Controller
 
         private void MoveCartsRow8()
         {
-            
+            MovableObject tempCart;
+            foreach (var tile in board.tileList1)
+            {
+                if (tile.isOccupied)
+                {
+
+                    tempCart = tile.currentObject;
+
+                    if (!tile.Previous.isOccupied)
+                    {
+                        tile.isOccupied = false;
+                        tile.currentObject = null;
+
+                        tile.Previous.isOccupied = true;
+                        tile.Previous.currentObject = tempCart;
+
+                        tile.ChangeIcon();
+                        break;
+                    }
+                    else
+                    {
+                        //if(tile.Next.index > 7)
+                        //usually a collision check but these are safe spaces
+                        //check if(tile.index == 0)
+                            //perform no aciton
+                    }
+                    
+
+
+                    //else TODO: collision check!
+                    //{
+
+                    //}
+                }
+            }
         }
 
         public void AddCart()

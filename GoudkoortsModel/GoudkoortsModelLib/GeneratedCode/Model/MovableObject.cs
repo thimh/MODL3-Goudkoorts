@@ -14,6 +14,8 @@ namespace Model
 	public class MovableObject
 	{
         public virtual string icon { get; set; }
+
+        public bool hasMoved { get; set; }
 	}
 }
 
