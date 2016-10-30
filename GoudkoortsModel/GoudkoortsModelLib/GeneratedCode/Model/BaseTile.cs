@@ -48,22 +48,6 @@ namespace Model
         public int index { get; set; }
 
         public MovableObject currentObject { get; set; }
-
-        public virtual void ChangeIcon()
-        {
-            if (isOccupied)
-            {
-                icon = "[00]";
-            }
-            else if (hasShip)
-            {
-                icon = "<0" + ship.loadAmount + ">";
-            }
-            else
-            {
-                icon = "[  ]";
-            }
-        }
 	}
 }
 

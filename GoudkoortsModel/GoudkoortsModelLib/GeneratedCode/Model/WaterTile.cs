@@ -9,11 +9,16 @@ namespace GoudkoortsModelLib.GeneratedCode.Model
 {
     class WaterTile : BaseTile
     {
-        public override string icon { get { return "[~~]"; } }
-
-        public WaterTile()
+        public override string icon
         {
-            
+            get
+            {
+                if (hasShip)
+                {
+                    return "<0" + ship.loadAmount + ">";
+                }
+                return "<~~>";
+            }
         }
     }
 }

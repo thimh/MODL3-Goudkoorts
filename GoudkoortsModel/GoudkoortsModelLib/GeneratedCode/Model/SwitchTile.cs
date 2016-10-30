@@ -19,32 +19,17 @@ namespace Model
         public override string icon {
             get
             {
-                if (isUp)
+                if (isOccupied)
                 {
-                    return "{" + number +"^}";
+                    return "{00}";
                 }
                 else
                 {
-                    return "{" + number +"v}";
-                }
-            }
-        }
-
-        public override void ChangeIcon()
-        {
-            if (isOccupied)
-            {
-                icon = "{00}";
-            }
-            else
-            {
-                if (isUp)
-                {
-                    icon = "{" + number + "^}";
-                }
-                else
-                {
-                    icon = "{" + number + "v}";
+                    if (isUp)
+                    {
+                        return "{" + number + "^}";
+                    }
+                    return "{" + number + "v}";
                 }
             }
         }

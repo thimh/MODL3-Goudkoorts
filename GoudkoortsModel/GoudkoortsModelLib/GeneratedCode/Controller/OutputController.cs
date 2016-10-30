@@ -10,7 +10,7 @@ namespace GoudkoortsModelLib.GeneratedCode.Controller
 {
     public class OutputController
     {
-        public string input;
+        public ConsoleKeyInfo input;
 
         public GameController gameController;
 
@@ -22,57 +22,77 @@ namespace GoudkoortsModelLib.GeneratedCode.Controller
         public void SwitchInput()
         {
             //TODO: check if isOccupied
-            input = Console.ReadLine();
-            switch (input)
+            input = Console.ReadKey();
+            switch (input.Key)
             {
-                case "1":
-                    if (gameController.board.tileList4[0].isUp)
+                case ConsoleKey.D1:
+                    var switch1 = gameController.board.tileList4[0];
+                    if (!switch1.isOccupied)
                     {
-                        gameController.board.tileList4[0].isUp = false;
-                    }
-                    else
-                    {
-                        gameController.board.tileList4[0].isUp = true;
-                    }
-                    break;
-                case "2":
-                    if (gameController.board.tileList4[2].isUp)
-                    {
-                        gameController.board.tileList4[2].isUp = false;
-                    }
-                    else
-                    {
-                        gameController.board.tileList4[2].isUp = true;
+                        if (switch1.isUp)
+                        {
+                            switch1.isUp = false;
+                        }
+                        else
+                        {
+                            switch1.isUp = true;
+                        }
                     }
                     break;
-                case "3":
-                    if (gameController.board.tileList6[0].isUp)
+                case ConsoleKey.D2:
+                    var switch2 = gameController.board.tileList4[2];
+                    if (!switch2.isOccupied)
                     {
-                        gameController.board.tileList6[0].isUp = false;
-                    }
-                    else
-                    {
-                        gameController.board.tileList6[0].isUp = true;
-                    }
-                    break;
-                case "4":
-                    if (gameController.board.tileList6[2].isUp)
-                    {
-                        gameController.board.tileList6[2].isUp = false;
-                    }
-                    else
-                    {
-                        gameController.board.tileList6[2].isUp = true;
+                        if (switch2.isUp)
+                        {
+                            switch2.isUp = false;
+                        }
+                        else
+                        {
+                            switch2.isUp = true;
+                        }
                     }
                     break;
-                case "5":
-                    if (gameController.board.tileList4[3].isUp)
+                case ConsoleKey.D3:
+                    var switch3 = gameController.board.tileList6[0];
+                    if (!switch3.isOccupied)
                     {
-                        gameController.board.tileList4[3].isUp = false;
+                        if (switch3.isUp)
+                        {
+                            switch3.isUp = false;
+                        }
+                        else
+                        {
+                            switch3.isUp = true;
+                        }
                     }
-                    else
+                    break;
+                case ConsoleKey.D4:
+                    var switch4 = gameController.board.tileList6[2];
+                    if (!switch4.isOccupied)
                     {
-                        gameController.board.tileList4[3].isUp = true;
+                        if (switch4.isUp)
+                        {
+                            switch4.isUp = false;
+                        }
+                        else
+                        {
+                            switch4.isUp = true;
+                        }
+                    }
+                    break;
+                case ConsoleKey.D5:
+                    var switch5 = gameController.board.tileList4[3];
+                    if (!switch5.isOccupied)
+                    {
+                        if (switch5.isUp)
+                        {
+                            switch5.isUp = false;
+                        }
+                        else
+                        {
+                            switch5.isUp = true;
+                        }
                     }
                     break;
                 default:

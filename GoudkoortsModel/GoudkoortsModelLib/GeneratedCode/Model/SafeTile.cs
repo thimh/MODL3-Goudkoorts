@@ -13,8 +13,18 @@ namespace Model
 
 	public class SafeTile : BaseTile
 	{
-        public override string icon { get { return "[__]"; } }
+	    public override string icon
+	    {
+	        get
+	        {
+	            if (isOccupied)
+	            {
+	                return "{00}";
+	            }
+                return "{__}";
+	        }
+	    }
 
-    }
+	}
 }
 

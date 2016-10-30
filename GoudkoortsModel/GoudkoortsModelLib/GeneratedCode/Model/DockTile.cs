@@ -13,7 +13,17 @@ namespace Model
 
 	public class DockTile : BaseTile
 	{
-        public override string icon { get { return "[_D]"; } }
-    }
+	    public override string icon
+	    {
+	        get
+	        {
+	            if (isOccupied)
+	            {
+	                return "{00}";
+	            }
+	            return "{_D}";
+	        }
+	    }
+	}
 }
 

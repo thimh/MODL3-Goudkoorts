@@ -13,11 +13,7 @@ namespace Model
 
 	public class Ship : MovableObject
 	{
-	    public override int loadAmount
-		{
-			get;
-			set;
-		}
+	    public override int loadAmount { get; set; }
 
 	    public override string icon
 	    {
