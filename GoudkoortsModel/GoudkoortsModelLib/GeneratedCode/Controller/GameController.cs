@@ -13,9 +13,8 @@ namespace Controller
     public class GameController
     {
         public string input;
-
-
-        public virtual bool isGameOver { get; set; }
+        
+        public bool isGameOver { get; set; }
 
         public Board board;
 
@@ -28,11 +27,15 @@ namespace Controller
             board = new Board();
             gameView = new GameView(this);
             outputController = new OutputController(this);
+
+            var moveTimer = new Timer();
+            moveTimer.Elapsed += new ElapsedEventHandler(OnTimedEventMove);
+            moveTimer.Interval = 5000; //TODO: interval should be changed depenting on score
+            moveTimer.Enabled = true;
+
             gameView.ShowBoard();
             PlayGame();
         }
-
-        private Timer moveTimer;
 
         public void PlayGame()
         {
@@ -52,34 +55,14 @@ namespace Controller
                     board.score += 10;
                 }
 
-                moveTimer = new Timer();
-                moveTimer.Elapsed += new ElapsedEventHandler(OnTimedEventMove);
-                moveTimer.Interval = 100; //TODO: interval should be changed depenting on score
-                moveTimer.Enabled = true;
-
                 outputController.SwitchInput();
             }
         }
 
         public void OnTimedEventMove(object sender, ElapsedEventArgs e)
         {
-            //TODO: move all movable opbjects
-            //TODO: switch 2 causes problems
             AddCart();
             MoveCart();
-            Console.WriteLine("");
-            Console.WriteLine("Row 1:");
-            Console.WriteLine("Tile 10 isOccupied: " + board.tileList1[10].isOccupied);
-            Console.WriteLine("Tile 10 next: " + board.tileList1[10].Next);
-            Console.WriteLine("Tile 10 next isOccupied: " + board.tileList1[10].Next.isOccupied);
-            Console.WriteLine("Tile 10 next index: " + board.tileList1[10].Next.index);
-            Console.WriteLine("Tile 10 next icon: " + board.tileList1[10].Next.icon);
-            Console.WriteLine("");
-            Console.WriteLine(board.tileList0[9].hasShip);
-            Console.WriteLine(board.tileList0[9].ship.icon);
-            Console.WriteLine(board.tileList0[9].ship);
-            Console.WriteLine("");
-            Console.WriteLine(board.score);
         }
 
         public void MoveCart()

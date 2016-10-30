@@ -21,7 +21,6 @@ namespace GoudkoortsModelLib.GeneratedCode.Controller
 
         public void SwitchInput()
         {
-            //TODO: check if isOccupied
             input = Console.ReadKey();
             switch (input.Key)
             {

@@ -134,6 +134,11 @@ namespace View
             Console.WriteLine("");
             Console.WriteLine("");
             Console.WriteLine("Score: " + controller.board.score);
+
+            //controls
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("Use the numbers 1 - 5 to control the switches");
         }
 
 		public void ShowGameOver()
