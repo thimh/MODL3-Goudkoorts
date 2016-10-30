@@ -314,72 +314,6 @@ namespace Controller
                             }
                         }
                     }
-                    /*if (tile.Next.GetType() != typeof(SwitchTile))
-                    {
-                        if (!tile.Next.isOccupied && tile.currentObject.hasMoved == false)
-                        {
-                            tile.isOccupied = false;
-                            tile.currentObject = null;
-
-                            tile.Next.isOccupied = true;
-                            tile.Next.currentObject = tempCart;
-
-                            tile.ChangeIcon();
-                            tile.currentObject.hasMoved = true;
-                            break;
-                        }
-                    }
-                    else
-                    {
-                        if (tile.index == 2)
-                        {
-                            if (tile.isUp)
-                            {
-                                tile.Next = board.tileList3[3];
-                                //move to tileList3[3]
-                                if (tile.Next.isOccupied)
-                                {
-                                    //collision!
-                                }
-                                else
-                                {
-
-                                    tile.isOccupied = false;
-                                    tile.currentObject = null;
-
-                                    tile.Next.isOccupied = true;
-                                    tile.Next.currentObject = tempCart;
-
-                                    tile.ChangeIcon();
-                                    tile.currentObject.hasMoved = true;
-                                    break;
-                                }
-                            }
-                            else
-                            {
-                                tile.Next = board.tileList5[3];
-                                //move to tileList5[3]
-                                if (tile.Next.isOccupied)
-                                {
-                                    //collision!
-                                }
-                                else
-                                {
-
-                                    tile.isOccupied = false;
-                                    tile.currentObject = null;
-
-                                    tile.Next.isOccupied = true;
-                                    tile.Next.currentObject = tempCart;
-
-                                    tile.ChangeIcon();
-                                    tile.currentObject.hasMoved = true;
-                                    break;
-                                }
-                            }
-                        }
-
-                    }*/
                 }
             }
         }
@@ -532,68 +466,6 @@ namespace Controller
                             }
                         }
                     }
-                    /*if (tile.Next.GetType() != typeof(SwitchTile))
-                    {
-                        if (!tile.Next.isOccupied)
-                        {
-                            tile.isOccupied = false;
-                            tile.currentObject = null;
-
-                            tile.Next.isOccupied = true;
-                            tile.Next.currentObject = tempCart;
-
-                            tile.ChangeIcon();
-                            break;
-                        }
-                    }
-                    else
-                    {
-                        if (tile.index == 2)
-                        {
-                            if (tile.isUp)
-                            {
-                                tile.Next = board.tileList5[5];
-                                //move to tileList5[5]
-                                if (tile.Next.isOccupied)
-                                {
-                                    //collision!
-                                }
-                                else
-                                {
-
-                                    tile.isOccupied = false;
-                                    tile.currentObject = null;
-
-                                    tile.Next.isOccupied = true;
-                                    tile.Next.currentObject = tempCart;
-
-                                    tile.ChangeIcon();
-                                    break;
-                                }
-                            }
-                            else
-                            {
-                                tile.Next = board.tileList7[6];
-                                //move to tileList7[6]
-                                if (tile.Next.isOccupied)
-                                {
-                                    //collision!
-                                }
-                                else
-                                {
-
-                                    tile.isOccupied = false;
-                                    tile.currentObject = null;
-
-                                    tile.Next.isOccupied = true;
-                                    tile.Next.currentObject = tempCart;
-
-                                    tile.ChangeIcon();
-                                    break;
-                                }
-                            }
-                        }
-                    }*/
                 }
             }
         }
@@ -719,8 +591,6 @@ namespace Controller
                         MovableObject cart = new Cart();
                         board.tileList7[0].currentObject = cart;
                     }
-                    break;
-                default:
                     break;
             }
             gameView.ShowBoard();
