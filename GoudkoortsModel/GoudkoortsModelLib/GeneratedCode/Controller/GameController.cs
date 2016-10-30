@@ -12,8 +12,6 @@ namespace Controller
 
     public class GameController
     {
-        public string input;
-        
         public bool isGameOver { get; set; }
 
         public Board board;

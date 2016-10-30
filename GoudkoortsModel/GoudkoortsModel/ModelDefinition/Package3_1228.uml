@@ -211,6 +211,45 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
+          <association
+            Id="1b53c197-a09e-4b0a-b718-5505dff04a1a"
+            isDerived="false"
+            sourceEndRoleName="GameController"
+            targetEndRoleName="OutputController"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="cc9e9edb-c70d-48f3-9800-01d4165602cc"
+              LastKnownName="OutputController"
+              LastKnownLocation="Package3_1228.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="49125b50-27f7-4014-b5f8-1169460735dd"
+                  name="GameController"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="6e44c120-9715-4084-ae19-9f0b985cbc63"
+                  name="OutputController"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
         </targetEnds>
         <ownedAttributesInternal>
           <property
@@ -351,7 +390,135 @@
               </stereotypeInstance>
             </appliedStereotypesInternal>
           </property>
+          <property
+            Id="66204250-38e0-4eec-b8c2-7400832706e3"
+            name="GameView gameView"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="83cfdf51-5224-4159-a905-a8ba03bc6a0c"
+            name="OutputController outputController"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
         </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="e3d61e76-1b19-4ccf-8602-c3c9ec3833a7"
+            name="void PlayGame"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="34ec5be7-b576-4d14-9f4d-638d9cb854e6"
+            name="void OnTimedEventMove"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="2db69c78-e08a-4d29-b90b-5455a5659860"
+            name="void MoveCart"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="dcb0fd0c-5c14-4c8b-a005-5db82cd583b0"
+            name="void MoveCartsRow1"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="830369c6-5d2b-47cd-9996-d70c666dc512"
+            name="void MoveCartsRow2"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="acf7d1aa-f03c-4373-b0da-b0547d37bc79"
+            name="void MoveCartsRow3"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="1d469429-6810-4bc2-9433-714b709a8fff"
+            name="void MoveCartsRow4"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="2a60af62-5079-49d2-8778-8ca61eaf35b7"
+            name="void MoveCartsRow5"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="84c7f159-e193-487c-bc22-efdfb92d7f68"
+            name="void MoveCartsRow6"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="f8b8e5a2-dc21-4cf2-a5a9-45f0d8df18e7"
+            name="void MoveCartsRow7"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="c4d1a80f-5325-431c-93c6-8720b825dee7"
+            name="void MoveCartsRow7"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="a07760a5-4063-4d97-87e0-c5d803546231"
+            name="void AddCart"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="4854f588-65fb-4072-a9de-0a607be41e62"
+            name="void AddShip"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -365,6 +532,90 @@
           <operation
             Id="d4ae0adf-d3bc-4706-816f-48dbb2d082d5"
             name="MoveSwitch"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="cc9e9edb-c70d-48f3-9800-01d4165602cc"
+        name="OutputController"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="b62fc838-e9df-499f-b8f7-db50c0d14336"
+            isDerived="false"
+            sourceEndRoleName="OutputController"
+            targetEndRoleName="GameController"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="0dae7f4a-3fc5-4c98-a15f-4280b40a3f4e"
+              LastKnownName="GameController"
+              LastKnownLocation="Package3_1228.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="50dce9b9-6e52-4940-a493-2ff45eb84cdd"
+                  name="OutputController"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="115fe67b-e1be-44b4-8a21-80b98acfcf20"
+                  name="GameController"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="cc82ea54-2682-49a7-a6a0-eda2cb9bca22"
+            name="ConsoleKeyInfo input"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="1c3a161c-2772-4540-81d2-250d906517f0"
+            name="GameController gameController"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="a56eab20-1008-4683-adb5-db818064cf9c"
+            name="void SwitchInput"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"

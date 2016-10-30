@@ -37,8 +37,6 @@
 
         public virtual BaseTile Next { get; set; }
 
-        public virtual BaseTile Previous { get; set; }
-
         public int index { get; set; }
 
         public MovableObject currentObject { get; set; }

@@ -19,8 +19,6 @@ namespace Model
         public List<BaseTile> tileList7;
         public List<BaseTile> tileList8;
 
-        public IEnumerable<BaseTile> BaseTile { get; set; }
-
 	    public int score { get; set; }
 
 	    public Board()
