@@ -32,30 +32,31 @@ namespace Controller
             PlayGame();
         }
 
+        private Timer moveTimer;
+
         public void PlayGame()
         {
-            //board.tileList1[5].currentObject = new Cart();
-            //board.tileList1[5].isOccupied = true;
-
-            AddShip();
-            if (board.tileList0[9].ship.loadAmount == 10)
-            {
-                board.tileList0[9].hasShip = false;
-                board.tileList0[9].ship = null;
-
-                AddShip();
-
-                board.score += 10;
-            }
-
-            Timer moveTimer = new Timer();
-            moveTimer.Elapsed += new ElapsedEventHandler(OnTimedEventMove);
-            moveTimer.Interval = 2000; //TODO: interval should be changed depenting on score
-            moveTimer.Enabled = true;
-
-            //while (Console.Read() != 'q') ;
             while (!isGameOver)
             {
+                if (board.tileList0[9].hasShip == false)
+                {
+                    AddShip();
+                }
+                else if (board.tileList0[9].ship.loadAmount == 10)
+                {
+                    board.tileList0[9].hasShip = false;
+                    board.tileList0[9].ship = null;
+
+                    AddShip();
+
+                    board.score += 10;
+                }
+
+                moveTimer = new Timer();
+                moveTimer.Elapsed += new ElapsedEventHandler(OnTimedEventMove);
+                moveTimer.Interval = 100; //TODO: interval should be changed depenting on score
+                moveTimer.Enabled = true;
+
                 outputController.SwitchInput();
             }
         }
@@ -76,7 +77,9 @@ namespace Controller
             Console.WriteLine("");
             Console.WriteLine(board.tileList0[9].hasShip);
             Console.WriteLine(board.tileList0[9].ship.icon);
-            //Test();
+            Console.WriteLine(board.tileList0[9].ship);
+            Console.WriteLine("");
+            Console.WriteLine(board.score);
         }
 
         public void MoveCart()
@@ -111,7 +114,7 @@ namespace Controller
 
                     if (tile.GetType() == typeof(DockTile) && board.tileList0[9].hasShip)
                     {
-                        tile.ship.loadAmount++;
+                        board.tileList0[9].ship.loadAmount++;
                         board.score++;
                     }
 
@@ -150,7 +153,9 @@ namespace Controller
                 }
                 else
                 {
-                    //collision!
+                    //isGameOver = true;
+                    //gameView.ShowGameOver();
+                    //moveTimer.Stop();
                 }
             }
         }
@@ -177,7 +182,9 @@ namespace Controller
                         }
                         else
                         {
-                            //collision!
+                            //isGameOver = true;
+                            //gameView.ShowGameOver();
+                            //moveTimer.Stop();
                         }
                     }
                     else
@@ -201,7 +208,9 @@ namespace Controller
                                 }
                                 else
                                 {
-                                    //collision!
+                                    //isGameOver = true;
+                                    //gameView.ShowGameOver();
+                                    //moveTimer.Stop();
                                 }
                             }
                         }
@@ -239,7 +248,9 @@ namespace Controller
                         }
                         else
                         {
-                            //collision!
+                            //isGameOver = true;
+                            //gameView.ShowGameOver();
+                            //moveTimer.Stop();
                         }
                     }
                     else
@@ -259,7 +270,9 @@ namespace Controller
                             }
                             else
                             {
-                                //collision!
+                                //isGameOver = true;
+                                //gameView.ShowGameOver();
+                                //moveTimer.Stop();
                             }
                         }
                         else if (!tile.isUp && tile.index == 2)
@@ -277,7 +290,9 @@ namespace Controller
                             }
                             else
                             {
-                                //collision!
+                                //isGameOver = true;
+                                //gameView.ShowGameOver();
+                                //moveTimer.Stop();
                             }
                         }
                         else
@@ -293,7 +308,9 @@ namespace Controller
                             }
                             else
                             {
-                                //collision!
+                                //isGameOver = true;
+                                //gameView.ShowGameOver();
+                                //moveTimer.Stop();
                             }
                         }
                     }
@@ -389,7 +406,9 @@ namespace Controller
                         }
                         else
                         {
-                            //collision!
+                            //isGameOver = true;
+                            //gameView.ShowGameOver();
+                            //moveTimer.Stop();
                         }
                     }
                     else
@@ -413,7 +432,9 @@ namespace Controller
                                 }
                                 else
                                 {
-                                    //collision!
+                                    //isGameOver = true;
+                                    //gameView.ShowGameOver();
+                                    //moveTimer.Stop();
                                 }
                             }
                         }
@@ -445,7 +466,9 @@ namespace Controller
                         }
                         else
                         {
-                            //collision!
+                            //isGameOver = true;
+                            //gameView.ShowGameOver();
+                            //moveTimer.Stop();
                         }
                     }
                     else
@@ -465,7 +488,9 @@ namespace Controller
                             }
                             else
                             {
-                                //collision!
+                                //isGameOver = true;
+                                //gameView.ShowGameOver();
+                                //moveTimer.Stop();
                             }
                         }
                         else if (!tile.isUp && tile.index == 2)
@@ -483,7 +508,9 @@ namespace Controller
                             }
                             else
                             {
-                                //collision!
+                                //isGameOver = true;
+                                //gameView.ShowGameOver();
+                                //moveTimer.Stop();
                             }
                         }
                         else
@@ -499,7 +526,9 @@ namespace Controller
                             }
                             else
                             {
-                                //collision!
+                                //isGameOver = true;
+                                //gameView.ShowGameOver();
+                                //moveTimer.Stop();
                             }
                         }
                     }
@@ -591,7 +620,9 @@ namespace Controller
                         }
                         else
                         {
-                            //collision!
+                            //isGameOver = true;
+                            //gameView.ShowGameOver();
+                            //moveTimer.Stop();
                         }
                     }
                     else
@@ -615,7 +646,9 @@ namespace Controller
                                 }
                                 else
                                 {
-                                    //collision!
+                                    //isGameOver = true;
+                                    //gameView.ShowGameOver();
+                                    //moveTimer.Stop();
                                 }
                             }
                         }
@@ -700,12 +733,6 @@ namespace Controller
             tile.hasShip = true;
 
             tile.ship.loadAmount = 0;
-        }
-
-        public void Test()
-        {
-            MoveCart();
-            AddCart();
         }
     }
 }

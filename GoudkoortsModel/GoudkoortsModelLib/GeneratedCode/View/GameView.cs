@@ -136,10 +136,13 @@ namespace View
             Console.WriteLine("Score: " + controller.board.score);
         }
 
-		public virtual void ShowGameOver()
+		public void ShowGameOver()
 		{
-			throw new System.NotImplementedException();
-		}
+            Console.Clear();
+            Console.WriteLine("|-----------------------------------------|");
+            Console.WriteLine("|--------------- GAMEOVER ----------------|");
+            Console.WriteLine("|-----------------------------------------|");
+        }
 
 	}
 }
